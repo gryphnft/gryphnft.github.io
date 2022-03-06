@@ -3,6 +3,7 @@ html, body {
   color: #EEEEEE;
   font-family: "Open Sans", Arial;
   margin: 0;
+  scroll-behavior: smooth; 
 }
 
 a, a:hover, a:active, a:visited {
@@ -300,32 +301,29 @@ li {
 }
 
 @media(max-width: 767px) {
-  .article-banner {
-    margin: 40px 0 20px;
-    padding: 20px 40px;
+  .head {
+    display: block;
+  }
+
+  .head .left {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding-top: 25px;
+  }
+
+  .head .left .name {
+    padding-left: 10px;
+  }
+
+  .head .right {
+    padding-top: 25px;
+    text-align: center;
   }
 }
 
-@media(max-width: 420px) {
-  .article-banner {
-    padding: 10px 20px;
-  }
-
-  .head {
-    display: block;
-    padding: 10px;
-  }
-  
-  .head nav {
-    display: block;
-    text-align: left;
-  }
-
-  .head nav a:first-child{
-    margin-left: 0;
-  }
-
-  .body {
-    padding: 10px;
+@media(max-width: 515px) {
+  .foot .center {
+    padding: 0 20px;
   }
 }

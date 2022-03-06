@@ -17,6 +17,11 @@ html, body {
   position: relative;
 }
 
+.section {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
 .section .container {
   margin: auto;
   max-width: 900px;
@@ -52,11 +57,11 @@ html, body {
 
 .section-1 {
   background-image: url(/images/bg-space.png);
-  background-image: url(/images/bg-space.png), linear-gradient(#eb01a5, #d13531);
   background-position: center bottom;
   background-size: cover;
   height: 100%;
   margin-top: -90px;
+  overflow-x: hidden;
   padding-top: 90px;
   position: relative;
 }
@@ -68,8 +73,7 @@ html, body {
 
 .section-1 .container {
   display: flex;
-  height: 600px;
-  padding: 100px 20px 0;
+  padding: 100px 20px;
   position: relative;
   z-index: 2;
 }
@@ -149,15 +153,16 @@ html, body {
 }
 
 .section-1 .right {
+  max-width: 450px;
   overflow: hidden;
-  position: relative;
-  width: 450px;
+}
+
+.section-1 .right .frame {
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .section-1 .right img {
-  position: absolute;
-  transition: 1s ease-in-out;
-  right: -450px;
   width: 100%;
 }
 
@@ -195,7 +200,7 @@ html, body {
 
 .section-3 {
   background-color: #000000;
-  padding: 40px 0;
+  padding: 40px 20px;
 }
 
 .section-3 ul {
@@ -351,6 +356,80 @@ html, body {
   padding-top: 100px;
 }
 
-.section-5 .left {
-  width: 50%;
+@media(max-width: 980px) {
+  .section-1 .container {
+    display: block;
+    padding-top: 0;
+  }
+
+  .section-1 .left {
+    padding-right: 0;
+    text-align: center;
+  }
+
+  .section-1 .right {
+    margin: 40px auto 0;
+  }
+
+  .section-1 h2 {
+    white-space: normal;
+  }
+
+  .section-1 .chains {
+    white-space: normal;
+  }
 }
+
+@media(max-width: 767px) {
+  .section-1 {
+    margin-top: -150px;
+    padding-top: 150px;
+  }
+
+  .section-2 {
+    position: relative;
+  }
+
+  .section-2 .container {
+    display: block;
+  }
+
+  .section-2 .left {
+    margin-top: 80%;
+    padding-right: 0;
+    text-align: center;
+    width: auto;
+  }
+
+  .section-2 .right {
+    position: absolute;
+    text-align: center;
+    top: 80px;
+    width: auto;
+  }
+
+  .section-2 .right img {
+    width: 80%;
+  }
+
+  .section-3 .container {
+    display: block;
+  }
+
+  .section-3 .left {
+    text-align: center;
+    width: auto;
+  }
+
+  .section-3 .right {
+    padding-top: 40px;
+    text-align: center;
+    width: auto;
+  }
+
+  .section-3 ul {
+    list-style: none;
+    padding: 0;
+  }
+}
+
