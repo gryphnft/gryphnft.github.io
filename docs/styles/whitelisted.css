@@ -1,0 +1,30 @@
+label {
+  display: block;
+}
+
+h1 {
+  margin-top: 0;
+}
+
+.container {
+  margin: auto;
+  max-width: 600px;
+}
+
+.body {
+  background-color: #000000;
+  padding: 60px 20px;
+}
+
+.body form .form-row {
+  margin-bottom: 20px;
+}
+
+.body form .input-text {
+  padding: 10px 15px;
+  width: calc(100% - 35px);
+}
+
+.body form button {
+  padding: 10px 20px;
+}
