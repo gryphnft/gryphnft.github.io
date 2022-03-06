@@ -1,0 +1,331 @@
+html, body {
+  background-color: #222328;
+  color: #EEEEEE;
+  font-family: "Open Sans", Arial;
+  margin: 0;
+}
+
+a, a:hover, a:active, a:visited {
+  color: #EEEEEE;
+  text-decoration: none;
+}
+
+blockquote {
+  border-left: 5px solid #CCCCCC;
+  color: #CCCCCC;
+  line-height: 26px;
+  margin: 10px 0;
+  padding: 5px 20px;
+}
+
+code {
+  background: #EEEEEE;
+  display: inline-block;
+  padding: 2px 5px;
+}
+
+pre code {
+  display: block;
+  line-height: 24px;
+  padding: 0 20px;
+}
+
+.overflow pre {
+  background: #000000;
+  overflow: auto;
+  width: 100%;
+}
+
+hr {
+  border-color: #555555;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+li {
+  color: #444444;
+  font-size: 13px;
+  line-height: 26px;
+  margin-bottom: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+.btn-primary {
+  background-color: #FFC600;
+  border-radius: 10px;
+  display: inline-block;
+  color: #FFFFFF;
+  padding: 5px 10px;
+}
+
+.btn-outline-primary {
+  border: 1px solid rgb(251, 191, 36);
+  display: inline-block;
+  color: rgb(251, 191, 36);
+  padding: 5px 10px;
+}
+
+.text-success {
+  color: #06a700
+}
+
+.text-warning {
+  color: #c59100
+}
+
+.text-danger {
+  color: #c20f02
+}
+
+.table {
+  border: 1px solid #444444;
+  border-spacing: 0;
+  width: 100%;
+}
+
+.table th {
+  background-color: #CCCCCC;
+  padding: 20px 5px;
+}
+
+.table td {
+  padding: 20px 5px;
+}
+
+.table.center th,
+.table.center td {
+  text-align: center;
+}
+
+.article-banner {
+  border:1px solid #444444;
+  margin: 60px 0 20px;
+  padding:50px 200px;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  margin: auto;
+  max-width: 900px;
+  padding: 20px;
+}
+
+.head .logo {
+  display: block;
+  height: 26px;
+}
+
+.head .left {
+  flex-grow: 1;
+}
+
+.head .left .logo {
+  float: left;
+  margin-top: -20px;
+}
+
+.head .left .logo img {
+  height: 50px;
+}
+
+.head .left .name {
+  color: rgb(251, 191, 36);
+  font-family: "Press Start 2P", sans-serif;
+  font-size: 18px;
+  padding-left: 60px;
+}
+
+.head .right {
+  line-height: 30px;
+  text-align: right;
+}
+
+.head .right a {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.head .right .social {
+  display: inline-block;
+  font-size: 20px;
+  margin-left: 10px;
+  margin-right: 0;
+}
+
+.body h1 {
+  text-transform: uppercase;
+}
+
+.body p {
+  font-size: 13px;
+  line-height: 26px;
+  margin: 0;
+  padding: 20px 0;
+}
+
+.body .media {
+  margin: auto;
+  max-width: 900px;
+  text-align: center;
+}
+
+.body .media h3 {
+  padding: 60px 0 20px;
+}
+
+.body .media a {
+  display: inline-block;
+  margin: 10px 20px;
+}
+
+.body .media img {
+  height: 70px;
+}
+
+.foot {
+  display: flex;
+  justify-content: center;
+  line-height: 37px;
+  padding: 40px 20px;
+}
+
+.foot .left a {
+  display: block;
+  text-align: right;
+}
+
+.foot .center {
+  padding: 0 80px;
+  text-align: center;
+}
+
+.foot .center h6 {
+  color: rgb(251, 191, 36);
+  font-family: "Press Start 2P", sans-serif;
+  font-size: 16px;
+  margin: 0;
+}
+
+.foot .center img {
+  width: 100px;
+}
+
+.foot .center .social {
+  font-size: 20px;
+  margin: 0 5px;
+}
+
+.foot .right a {
+  display: block;
+}
+
+.notification {
+  border: 1px solid #222222;
+  bottom: 20px;
+  color: #FFFFFF;
+  font-size: 12px;
+  left: 20px;
+  max-width: 375px;
+  padding: 20px 30px;
+  position: fixed;
+  z-index: 10000;
+}
+
+.notification a {
+  color: #FFFFFF;
+  text-decoration: underline;
+}
+
+.notification::before {
+  display: inline-block;
+  font-family: "Font Awesome 5 Free"; font-weight: 900;
+  padding-right: 10px;
+}
+
+.notification.notification-error {
+  background-color: #880000;
+}
+
+.notification.notification-error::before {
+  content: "\f057";
+}
+
+.notification.notification-success {
+  background-color: #008800;
+}
+
+.notification.notification-success::before {
+  content: "\f058";
+}
+
+.btn {
+  display: inline-block;
+  padding: 8px 16px;
+}
+
+.btn-solid,
+.btn-solid:hover {
+  color: #FFFFFF;
+}
+
+.btn-outline {
+  border-style: solid;
+  border-width: 1px;
+}
+
+.btn-solid.btn-success {
+  background-color: #008800;
+}
+
+.btn-outline.btn-success,
+.btn-outline.btn-success:hover {
+  border-color: #008800;
+  color: #008800;
+}
+
+.btn-solid.btn-danger {
+  background-color: #EC131D;
+}
+
+.btn-outline.btn-danger,
+.btn-outline.btn-danger:hover {
+  border-color: #EC131D;
+  color: #EC131D;
+}
+
+@media(max-width: 767px) {
+  .article-banner {
+    margin: 40px 0 20px;
+    padding: 20px 40px;
+  }
+}
+
+@media(max-width: 420px) {
+  .article-banner {
+    padding: 10px 20px;
+  }
+
+  .head {
+    display: block;
+    padding: 10px;
+  }
+  
+  .head nav {
+    display: block;
+    text-align: left;
+  }
+
+  .head nav a:first-child{
+    margin-left: 0;
+  }
+
+  .body {
+    padding: 10px;
+  }
+}
