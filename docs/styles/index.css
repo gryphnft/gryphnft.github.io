@@ -56,7 +56,7 @@ html, body {
 }
 
 .section-1 {
-  background-image: url(/images/bg-space.png);
+  background-image: url(https://gryphcdn.s3.ap-southeast-1.amazonaws.com/static/2022/bg-space.png);
   background-position: center bottom;
   background-size: cover;
   height: 100%;
@@ -107,7 +107,7 @@ html, body {
 }
 
 .section-1 .chains .chain {
-  background-image: url(/images/sprite-chains.png);
+  background-image: url(https://gryphcdn.s3.ap-southeast-1.amazonaws.com/static/2022/sprite-chains.png);
   background-repeat: no-repeat;
   background-size: 120px 120px;
   display: inline-block;
@@ -171,7 +171,7 @@ html, body {
 }
 
 .section-2 {
-  background-image: url(/images/bg-gns-1.jpg);
+  background-image: url(https://gryphcdn.s3.ap-southeast-1.amazonaws.com/static/2022/bg-gns-1.jpg);
   background-position: bottom;
   background-size: cover;
 }
@@ -229,7 +229,7 @@ html, body {
 }
 
 .section-4 {
-  background-image: url(/images/bg-gns-2.jpg);
+  background-image: url(https://gryphcdn.s3.ap-southeast-1.amazonaws.com/static/2022/bg-gns-2.jpg);
   background-size: cover;
 }
 
@@ -326,7 +326,7 @@ html, body {
 
 .section-5 {
   background-color: #111619;
-  background-image: url(/images/gcoin.png);
+  background-image: url(https://gryphcdn.s3.ap-southeast-1.amazonaws.com/static/2022/gcoin.png);
   background-position: calc(100% + 100px) -100px;
   background-repeat: no-repeat;
   background-size: 700px;

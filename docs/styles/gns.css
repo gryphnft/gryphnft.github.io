@@ -3,7 +3,7 @@ html, body {
 }
 
 .section-1 {
-  background-image: url(/images/bg-gns-2.jpg);
+  background-image: url(https://gryphcdn.s3.ap-southeast-1.amazonaws.com/static/2022/bg-gns-2.jpg);
   background-size: cover;
 }
 
