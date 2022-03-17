@@ -5,12 +5,12 @@ window.blockapi = {
 
   async write(contract, account, method, value, ...args) {
     const params = {
-      to: contracts.address,
+      to: contract.address,
       from: account,
       data: contract.methods[method](...args).encodeABI(),
     }
     
-    if (value) params.value = String(value)
+    if (value) params.value = String(this.web3().utils.toHex(value))
     
     return await window.ethereum.request({
       method: 'eth_sendTransaction',
@@ -18,7 +18,18 @@ window.blockapi = {
     })
   },
 
-  toEther(web3, num, format) {
+  send(contract, account, method, value, ...args) {
+    const params = {
+      to: contract.address,
+      from: account
+    }
+    if (value) params.value = String(this.web3().utils.toHex(value))
+    const rpc = contract.methods[method](...args)
+    return rpc.send(params)
+  },
+
+  toEther(num, format) {
+    const web3 = this.web3()
     if (format === 'string') {
       return web3.utils.fromWei(String(num)).toString()
     } else if (format === 'comma') {
@@ -29,8 +40,24 @@ window.blockapi = {
     return web3.utils.fromWei(String(num))
   },
 
-  toWei(web3, num) {
-    return web3.utils.toWei(String(num)).toString()
+  toWei(num) {
+    return this.web3().utils.toWei(String(num)).toString()
+  },
+
+  web3() {
+    if (typeof window._web3 === 'undefined') {
+      window._web3 = new Web3(window.ethereum)
+    }
+
+    return window._web3
+  },
+
+  contract(name) {
+    const web3 = this.web3()
+    return new web3.eth.Contract(
+      blockmetadata.contracts[name].abi,
+      blockmetadata.contracts[name].address
+    )
   },
 
   connect(blockmetadata, connected, disconnected) {
@@ -50,7 +77,7 @@ window.blockapi = {
         const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
         const networkId = await window.ethereum.request({ method: 'net_version' });
         if (networkId == blockmetadata.chain_id) {
-          const web3 = new Web3(window.ethereum)
+          const web3 = this.web3()
           const results = {
             account: accounts[0],
             web3: web3
@@ -86,11 +113,12 @@ window.blockapi = {
       }
     }
 
-    if (window.ethereum?.isMetaMask) {
+    if (window.ethereum?.isMetaMask && typeof window.__blockAPIListening === 'undefined') {
       window.ethereum.on('connect', validate.bind(null, 'connect'))
       window.ethereum.on('disconnect', disconnected)
       window.ethereum.on('chainChanged', validate.bind(null, 'chainChanged'))
       window.ethereum.on('accountsChanged', validate.bind(null, 'accountsChanged'))
+      window.__blockAPIListening = true
     }
     
     validate('init')
@@ -105,7 +133,7 @@ window.blockapi = {
     })
     const container = document.createElement('div')
     container.className = `notification notification-${type}`
-    container.innerHTML = message
+    container.innerHTML = `<div>${message}</div>`
     container.mounted = true
     document.body.appendChild(container)
     container.addEventListener('click', () => {

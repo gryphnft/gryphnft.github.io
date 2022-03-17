@@ -5,13 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <title>Get Whitelisted! - GRY.PH</title>
-    <meta name="description" content="Gasless Whitelisting by GRY.PH. Get whitelisted now!" />
-    <meta property="og:title" content="Get Whitelisted! - GRY.PH" />
+    <title>GRYPH Namespace Registration</title>
+    <meta property="og:title" content="GRYPH Namespace Registration" />
     <meta property="og:image" content="https://gryphcdn.s3.ap-southeast-1.amazonaws.com/static/2022/authentic-streetwear.jpg" />
-    <meta property="og:url" content="https://gry.ph/get-whitelisted" />
+    <meta property="og:url" content="https://marketplace.gry.ph/gns" />
     <meta property="og:type" content="website" />
-    <meta property="og:description" content="Gasless Whitelisting by GRY.PH. Get whitelisted now!" />
 
     <link rel="shortcut icon" href="//gryphcdn.s3.ap-southeast-1.amazonaws.com/static/2022/favicon.png" type="image/x-icon"></link>
     <link rel="icon" href="//gryphcdn.s3.ap-southeast-1.amazonaws.com/static/2022/favicon.png" type="image/x-icon" />
@@ -20,8 +18,8 @@
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" />
 
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-    <link rel="stylesheet" type="text/css" href="/styles/theme.css?" />
-    <link rel="stylesheet" type="text/css" href="/styles/gns.css?" />
+    <link rel="stylesheet" type="text/css" href="/styles/theme.css?v1" />
+    <link rel="stylesheet" type="text/css" href="/styles/gns.css?v1" />
   </head>
   <body>
     <header class="head">
@@ -29,7 +27,7 @@
         <a class="logo" href="/">
           <img src="https://gryphcdn.s3.ap-southeast-1.amazonaws.com/static/2022/gryph-8bit-7.png" />
         </a>
-        <div class="name">GRY.PH</div>
+        <a class="name" href="/">GRY.PH</a>
       </nav>
       <nav class="right">
         <a class="btn-outline-primary" href="https://shop.gry.ph/" target="_blank">Shop Now</a>
@@ -52,117 +50,156 @@
         <div class="container">
           <h1><span class="label">GRY.PH</span> <span class="title">Naming Service</span></h1>
           <h3>Decentralized Naming for sellers, buyers and art collections.</h3>
-          <form action="/gns">
+          <form id="registration">
             <img class="logo" width="35" src="https://gryphcdn.s3.ap-southeast-1.amazonaws.com/static/2022/gryph-8bit-7.png" />
             <label>GNS</label>
-            <input type="text" placeholder="ex. mycollection" />
+            <input id="namespace" type="text" placeholder="ex. mycollection" />
             <span class="domain">.gry.ph</span>
             <button>Reserve</button>
           </form>
+          <p class="note">Registration is not yet live, but you are free to try on testnet.</p>
         </div>
       </section>
       <section class="section section-2">
-        <h2>10,000 Reserved</h2>
-        <a href="#">See more on OpenSea</a>
+        <p>
+          GRY.PH is working on launching a one of a kind, cross chain 
+          marketplace and namespaces are a part of the services it 
+          provides. These namespaces are ER721 compliant NFTs using 
+          images generated and stored on chain.
+        </p>
+        <nav class="proof">
+          <a href="#">
+            <img src="https://gryphcdn.s3.ap-southeast-1.amazonaws.com/static/2022/logo-opensea.png">
+            <span>
+              <small>View On</small>
+              <strong>OpenSea</strong>
+            </span>
+          </a>
+          <a href="#">
+            <img src="https://gryphcdn.s3.ap-southeast-1.amazonaws.com/static/2022/logo-ethereum.png">
+            <span>
+              <small>View On</small>
+              <strong>Etherscan</strong>
+            </span>
+          </a>
+          <a href="https://github.com/gryphnft/contracts/blob/2.0/contracts/Gryph/GryphNamespaces.sol" target="_blank">
+            <img src="https://gryphcdn.s3.ap-southeast-1.amazonaws.com/static/2022/logo-github.png">
+            <span>
+              <small>Contracts On</small>
+              <strong>Github</strong>
+            </span>
+          </a>
+        </nav>
       </section>
       <section class="section section-3">
-        <h2>Frequent Questions</h2>
-        <div>
-          <strong>Why should I reserve a name?</strong>
-          <p>
-            If you are an artist/creator/collector/trader, you will 
-            want to reserve your desired name early in order to use it 
-            when we launch our NFT marketplace. Names reserved before 
-            the official launch will have no expiration.
-          </p>
-        </div>
-        <div>
-          <strong>How much does it cost?</strong>
-          <ul>
-            <li>0.192 ether for 4 letters</li>
-            <li>0.096 ether for 5 letters</li>
-            <li>0.048 ether for 6 letters</li>
-            <li>0.024 ether for 7 letters</li>
-            <li>0.012 ether for 8 letters</li>
-            <li>0.006 ether for 9 letters</li>
-            <li>0.003 ether for 10 letters or more</li>
-          </ul>
-        </div>
-        <div>
-          <strong>Why is it more expensive compared to ENS?</strong>
-          <p>
-            With ENS you have to renew every year. These namespaces do 
-            not expire and this offer will only last till the launch of 
-            our NFT marketplace.
-          </p>
-        </div>
-        <div>
-          <strong>When will I be able to use my name?</strong>
-          <p>
-            Your name can be immediately used when the NFT marketplace 
-            is launched.
-          </p>
-        </div>
-        <div>
-          <strong>Do I need to renew every year?</strong>
-          <p>
-            While the NFT marketplace is being launched, names reserved 
-            will never need to be renewed.
-          </p>
-        </div>
-        <div>
-          <strong>What happens if I sell or give away my name?</strong>
-          <p>
-            The ownership rights will pass to the new owner.
-          </p>
-        </div>
-        <div>
-          <strong>Do we need to do anything to ensure the continued use of my name?</strong>
-          <p>
-            Besides holding the NFT, no.
-          </p>
-        </div>
-        <div>
-          <strong>Can I trade my name on other NFT exchanges?</strong>
-          <p>
-            Yes you can.
-          </p>
-        </div>
-        <div>
-          <strong>How are funds earned from this service used?</strong>
-          <p>
-            Funds will be used for the continuing development of the 
-            NFT marketplace.
-          </p>
-        </div>
-        <div>
-          <strong>What prohibits large scale name grabbing besides registration fees?</strong>
-          <p>The cost of doing this and gas is the only limitation in place.</p>
-        </div>
-        <div>
-          <strong>Can my name ever be take away from me?</strong>
-          <p>
-            In small cases where the name is in breach of a registered 
-            trademark it may be taken away. In these cases you will be 
-            compensated for your loss.
-          </p>
-        </div>
-        <div>
-          <strong>How can I get a 2 or 3 letter name?</strong>
-          <p>
-            Right now the only way is to either contact us or wait for 
-            hyper exclusive airdrops.
-          </p>
+        <div class="container">
+          <h2>Frequent Questions</h2>
+          <div>
+            <strong>Why should I reserve a name?</strong>
+            <p>
+              If you are an artist/creator/collector/trader, you will 
+              want to reserve your desired name early in order to use it 
+              when we launch our NFT marketplace. Names reserved before 
+              the official launch will have no expiration.
+            </p>
+          </div>
+          <div>
+            <strong>What can I do with a namespace?</strong>
+            <p>
+              Namespaces will be used on the new marketplace as an easy 
+              way for others to remember and access your collection or 
+              profile easier. All namespaces that are NFT collections 
+              acquired through this medium will be featured and promoted 
+              throughout the marketplace.
+            </p>
+          </div>
+          <div>
+            <strong>How much does it cost?</strong>
+            <ul>
+              <li>0.192 ether for 4 letters</li>
+              <li>0.096 ether for 5 letters</li>
+              <li>0.048 ether for 6 letters</li>
+              <li>0.024 ether for 7 letters</li>
+              <li>0.012 ether for 8 letters</li>
+              <li>0.006 ether for 9 letters</li>
+              <li>0.003 ether for 10 letters or more</li>
+            </ul>
+          </div>
+          <div>
+            <strong>Why is it more expensive compared to ENS?</strong>
+            <p>
+              With ENS you have to renew every year. These namespaces do 
+              not expire and this offer will only last till the launch of 
+              our NFT marketplace.
+            </p>
+          </div>
+          <div>
+            <strong>When will I be able to use my name?</strong>
+            <p>
+              Your name can be immediately used when the NFT marketplace 
+              is launched.
+            </p>
+          </div>
+          <div>
+            <strong>Do I need to renew every year?</strong>
+            <p>
+              While the NFT marketplace is being launched, names reserved 
+              will never need to be renewed.
+            </p>
+          </div>
+          <div>
+            <strong>What happens if I sell or give away my name?</strong>
+            <p>
+              The ownership rights will pass to the new owner.
+            </p>
+          </div>
+          <div>
+            <strong>Do we need to do anything to ensure the continued use of my name?</strong>
+            <p>
+              Besides holding the NFT, no.
+            </p>
+          </div>
+          <div>
+            <strong>Can I trade my name on other NFT exchanges?</strong>
+            <p>
+              Yes you can.
+            </p>
+          </div>
+          <div>
+            <strong>How are funds earned from this service used?</strong>
+            <p>
+              Funds will be used for the continuing development of the 
+              NFT marketplace.
+            </p>
+          </div>
+          <div>
+            <strong>What prohibits large scale name grabbing besides registration fees?</strong>
+            <p>The cost of doing this and gas is the only limitation in place.</p>
+          </div>
+          <div>
+            <strong>Can my name ever be take away from me?</strong>
+            <p>
+              In small cases where the name is in breach of a registered 
+              trademark it may be taken away. In these cases you will be 
+              compensated for your loss.
+            </p>
+          </div>
+          <div>
+            <strong>How can I get a 2 or 3 letter name?</strong>
+            <p>
+              Right now the only way is to either contact us or wait for 
+              hyper exclusive airdrops.
+            </p>
+          </div>
         </div>
       </section>
     </main>
     <footer class="foot">
       <nav class="left">
         <a href="/">Home</a>
-        <a href="#">About</a>
-        <a href="https://whitepaper.gry.ph/" target="_blank">Whitepaper</a>
-        <a href="#">Roadmap</a>
-        <a href="#">Questions</a>
+        <a href="/about.html">About</a>
+        <a href="https://whitepaper.gry.ph/3.-technology/3.6.-roadmap" target="_blank">Roadmap</a>
+        <a href="https://whitepaper.gry.ph/5.-prologue/5.1.-faq" target="_blank">Questions</a>
       </nav>
       <nav class="center">
         <h6>GRY.PH</h6>
@@ -181,15 +218,15 @@
       </nav>
       <nav class="right">
         <a href="/gns.html">Naming Service</a>
+        <a href="https://whitepaper.gry.ph/" target="_blank">Whitepaper</a>
         <a href="/get-whitelisted.html">Get Whitelisted</a>
         <a href="https://shop.gry.ph/" target="_blank">Shop Now</a>
-        <a href="#">Terms of Use</a>
-        <a href="#">Privacy Policy</a>
       </nav>
     </footer>
+    <script src="//cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
     <script type="text/javascript" src="/scripts/lib/doon.js"></script>
     <script type="text/javascript" src="/scripts/lib/blockapi.js"></script>
-    <script type="text/javascript" src="/scripts/contracts.js"></script>
-    <script type="text/javascript" src="/scripts/gns.js?"></script>
+    <script type="text/javascript" src="/scripts/contracts-testnet.js"></script>
+    <script type="text/javascript" src="/scripts/gns.js?v1"></script>
   </body>
 </html>

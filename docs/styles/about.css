@@ -1,0 +1,49 @@
+.section-1 {
+  background-color: #000000;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.section-1 .container {
+  margin: auto;
+  max-width: 900px;
+}
+
+.section-1 p {
+  font-size: 13.5px;
+  margin: auto;
+  max-width: 600px;
+  padding: 0;
+}
+
+.section-1 ol {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style-position:inside;
+  padding: 0;
+}
+
+.section-1 li {
+  border: 1px solid #666666;
+  color: #CDCDCD;
+  font-size: 15px;
+  max-width: 200px;
+  margin: 5px;
+  padding: 20px;
+}
+
+.section-1 li::marker {
+  font-weight: bold;
+}
+
+.section-1 li a {
+  text-decoration: underline;
+}
+
+.section-1 .btn-primary {
+  font-weight: bold;
+  margin: 20px auto 0;
+  padding: 20px 40px;
+  text-transform: uppercase;
+}

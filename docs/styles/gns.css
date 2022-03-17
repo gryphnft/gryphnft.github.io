@@ -98,3 +98,87 @@ html, body {
   padding-left: 20px;
   padding-right: 20px;
 }
+
+.section-1 .note {
+  color: rgb(251, 191, 36);
+  text-align: center;
+}
+
+.section-2 {
+  margin-top: 20px;
+}
+
+.section-2 p {
+  font-size: 15px;
+  line-height: 30px;
+  margin: 40px auto 20px;
+  max-width: 560px;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.section-2 .proof {
+  border-bottom: 1px solid #000000;
+  border-top: 1px solid #000000;
+  margin-bottom: 20px;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.section-2 .proof a {
+  align-items: center;
+  display: inline-flex; 
+  margin: 0 30px;
+}
+
+.section-2 .proof span {
+  text-align: left;
+}
+
+.section-2 .proof img {
+  margin-right: 10px;
+  width: 50px;
+}
+
+.section-2 .proof strong {
+  display: block;
+}
+
+.section-3 {
+  background-color: #111619;
+  border-bottom: 1px solid #666666;
+  padding-bottom: 40px;
+}
+
+.section-3 .container {
+  margin: auto;
+  max-width: 640px;
+  padding: 0 20px;
+}
+
+.section-3 .container > div {
+  border-top: 1px solid #666666;
+  padding: 20px 0 0;
+}
+
+.section-3 h2 {
+  padding-top: 40px;
+  text-transform: uppercase;
+}
+
+.section-3 p,
+.section-3 li {
+  color: #CDCDCD;
+}
+
+@media(max-width: 600px) {
+  .section-2 .proof a {
+    margin: 0 10px;
+  }
+}
+
+@media(max-width: 520px) {
+  .section-2 .proof small, .section-2 .proof strong {
+    display: none; 
+  }
+}

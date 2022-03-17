@@ -18,8 +18,8 @@
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" />
 
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-    <link rel="stylesheet" type="text/css" href="/styles/theme.css?" />
-    <link rel="stylesheet" type="text/css" href="/styles/index.css?" />
+    <link rel="stylesheet" type="text/css" href="/styles/theme.css?v1" />
+    <link rel="stylesheet" type="text/css" href="/styles/index.css?v1" />
   </head>
   <body>
     <header class="head">
@@ -27,13 +27,13 @@
         <a class="logo" href="/">
           <img src="https://gryphcdn.s3.ap-southeast-1.amazonaws.com/static/2022/gryph-8bit-7.png" />
         </a>
-        <div class="name">GRY.PH</div>
+        <a class="name" href="/">GRY.PH</a>
       </nav>
       <nav class="right">
         <a class="btn-outline-primary" href="https://shop.gry.ph/" target="_blank">Shop Now</a>
         <a href="https://whitepaper.gry.ph/" target="_blank">Whitepaper</a>
         <a href="/get-whitelisted.html">Whitelist</a>
-        <!--<a href="/gns.html">GNS</a>-->
+        <a href="/gns.html">GNS</a>
         <a class="social" href="https://www.twitter.com/gryphnft" target="_blank">
           <i class="fab fa-twitter"></i>
         </a>
@@ -122,21 +122,19 @@
           </div>
         </div>
       </section>
-      <!--
       <section class="section section-4">
         <div class="container">
           <h2><span class="label">GRY.PH</span> <span class="title">Naming Service</span></h2>
           <h3>Decentralized Naming for sellers, buyers and art collections.</h3>
-          <form action="/gns">
+          <form action="/gns.html">
             <img class="logo" width="35" src="https://gryphcdn.s3.ap-southeast-1.amazonaws.com/static/2022/gryph-8bit-7.png" />
             <label>GNS</label>
-            <input type="text" placeholder="ex. mycollection" />
+            <input type="text" name="name" placeholder="ex. mycollection" />
             <span class="domain">.gry.ph</span>
             <button>Search</button>
           </form>
         </div>
       </section>
-      -->
       <section class="section section-5">
         <div class="container">
           <div class="left">
@@ -156,10 +154,9 @@
     <footer class="foot">
       <nav class="left">
         <a href="/">Home</a>
-        <!--<a href="#">About</a>-->
-        <a href="https://whitepaper.gry.ph/" target="_blank">Whitepaper</a>
-        <!--<a href="#">Roadmap</a>
-        <a href="#">Questions</a>-->
+        <a href="/about.html">About</a>
+        <a href="https://whitepaper.gry.ph/3.-technology/3.6.-roadmap" target="_blank">Roadmap</a>
+        <a href="https://whitepaper.gry.ph/5.-prologue/5.1.-faq" target="_blank">Questions</a>
       </nav>
       <nav class="center">
         <h6>GRY.PH</h6>
@@ -169,7 +166,7 @@
         <a class="social" href="https://www.twitter.com/gryphnft" target="_blank">
           <i class="fab fa-twitter"></i>
         </a>
-        <a class="social" href="https://discord.io/gryphmetafi" target="_blank">
+        <a class="social" href="https://discord.com/invite/PZDyNcVSNu" target="_blank">
           <i class="fab fa-discord"></i>
         </a>
         <a class="social" href="https://github.com/gryphnft" target="_blank">
@@ -177,16 +174,15 @@
         </a>
       </nav>
       <nav class="right">
-        <!--<a href="/gns.html">Naming Service</a>-->
+        <a href="/gns.html">Naming Service</a>
+        <a href="https://whitepaper.gry.ph/" target="_blank">Whitepaper</a>
         <a href="/get-whitelisted.html">Get Whitelisted</a>
         <a href="https://shop.gry.ph/" target="_blank">Shop Now</a>
-        <!--<a href="#">Terms of Use</a>
-        <a href="#">Privacy Policy</a>-->
       </nav>
     </footer>
     <script type="text/javascript" src="/scripts/lib/doon.js"></script>
     <script type="text/javascript" src="/scripts/home/particle.js"></script>
     <script type="text/javascript" src="/scripts/home/typewrite.js"></script>
-    <script type="text/javascript" src="/scripts/home.js"></script>
+    <script type="text/javascript" src="/scripts/home.js?v1"></script>
   </body>
 </html>

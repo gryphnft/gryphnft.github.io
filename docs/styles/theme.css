@@ -137,6 +137,7 @@ li {
 
 .head .left .name {
   color: rgb(251, 191, 36);
+  display: block;
   font-family: "Press Start 2P", sans-serif;
   font-size: 18px;
   padding-left: 60px;
@@ -196,6 +197,10 @@ li {
   padding: 40px 20px;
 }
 
+.foot .left {
+  padding-top: 24px;
+}
+
 .foot .left a {
   display: block;
   text-align: right;
@@ -222,20 +227,29 @@ li {
   margin: 0 5px;
 }
 
+.foot .right {
+  padding-top: 24px;
+}
+
 .foot .right a {
   display: block;
 }
 
 .notification {
-  border: 1px solid #222222;
   bottom: 20px;
   color: #FFFFFF;
   font-size: 12px;
   left: 20px;
+  position: fixed;
+  right: 20px;
+  z-index: 10000;
+}
+
+.notification div {
+  border: 1px solid #222222;
+  margin: auto;
   max-width: 375px;
   padding: 20px 30px;
-  position: fixed;
-  z-index: 10000;
 }
 
 .notification a {
@@ -243,25 +257,29 @@ li {
   text-decoration: underline;
 }
 
-.notification::before {
+.notification div::before {
   display: inline-block;
   font-family: "Font Awesome 5 Free"; font-weight: 900;
   padding-right: 10px;
 }
 
-.notification.notification-error {
+.notification.notification-info div {
+  background-color: #004688;
+}
+
+.notification.notification-error div {
   background-color: #880000;
 }
 
-.notification.notification-error::before {
+.notification.notification-error div::before {
   content: "\f057";
 }
 
-.notification.notification-success {
+.notification.notification-success div {
   background-color: #008800;
 }
 
-.notification.notification-success::before {
+.notification.notification-success div::before {
   content: "\f058";
 }
 

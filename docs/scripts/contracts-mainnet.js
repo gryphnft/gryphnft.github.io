@@ -1,24 +1,12 @@
 window.blockmetadata = {
-  "chain_id": 80001,
-  "chain_name": "Polygon (MATIC)",
-  "chain_scan": "https://rpc-mumbai.maticvigil.com/", //testnet
-  //"chain_scan": "https://bscscan.com/", //mainnet
+  "chain_id": 1,
+  "chain_name": "Ethereum Mainnet",
+  "chain_marketplace": "https://opensea.io/assets",
+  "chain_scan": "https://etherscan.io",
   "contracts": {
     "namespaces": {
-      "address": "0x5773Fe8CE26FAA9F6d9EeD99283188141C341d4C", //testnet
-      //"address": "0x2D368564a298F6738049cbCDB25E689b6157dc35", //mainnet
+      "address": "",
       "abi": [
-        {
-          "inputs": [
-            {
-              "internalType": "string",
-              "name": "uri",
-              "type": "string"
-            }
-          ],
-          "stateMutability": "nonpayable",
-          "type": "constructor"
-        },
         {
           "inputs": [],
           "name": "ApprovalOwnerIsOperator",
@@ -207,25 +195,6 @@ window.blockmetadata = {
         {
           "inputs": [
             {
-              "internalType": "uint256",
-              "name": "",
-              "type": "uint256"
-            }
-          ],
-          "name": "PRICES",
-          "outputs": [
-            {
-              "internalType": "uint256",
-              "name": "",
-              "type": "uint256"
-            }
-          ],
-          "stateMutability": "view",
-          "type": "function"
-        },
-        {
-          "inputs": [
-            {
               "internalType": "address",
               "name": "to",
               "type": "address"
@@ -237,6 +206,24 @@ window.blockmetadata = {
             }
           ],
           "name": "approve",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "tokenId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "recipient",
+              "type": "address"
+            }
+          ],
+          "name": "assign",
           "outputs": [],
           "stateMutability": "nonpayable",
           "type": "function"
@@ -301,7 +288,7 @@ window.blockmetadata = {
             },
             {
               "internalType": "string",
-              "name": "name",
+              "name": "namespace",
               "type": "string"
             }
           ],
@@ -345,6 +332,19 @@ window.blockmetadata = {
         {
           "inputs": [
             {
+              "internalType": "string",
+              "name": "uri",
+              "type": "string"
+            }
+          ],
+          "name": "initialize",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
               "internalType": "address",
               "name": "owner",
               "type": "address"
@@ -375,7 +375,7 @@ window.blockmetadata = {
             },
             {
               "internalType": "string",
-              "name": "name",
+              "name": "namespace",
               "type": "string"
             }
           ],
@@ -394,7 +394,7 @@ window.blockmetadata = {
               "type": "string"
             }
           ],
-          "stateMutability": "view",
+          "stateMutability": "pure",
           "type": "function"
         },
         {
@@ -447,25 +447,6 @@ window.blockmetadata = {
           "name": "renounceOwnership",
           "outputs": [],
           "stateMutability": "nonpayable",
-          "type": "function"
-        },
-        {
-          "inputs": [
-            {
-              "internalType": "string",
-              "name": "",
-              "type": "string"
-            }
-          ],
-          "name": "reserved",
-          "outputs": [
-            {
-              "internalType": "uint256",
-              "name": "",
-              "type": "uint256"
-            }
-          ],
-          "stateMutability": "view",
           "type": "function"
         },
         {
@@ -540,19 +521,6 @@ window.blockmetadata = {
         {
           "inputs": [
             {
-              "internalType": "string",
-              "name": "uri",
-              "type": "string"
-            }
-          ],
-          "name": "setBaseURI",
-          "outputs": [],
-          "stateMutability": "nonpayable",
-          "type": "function"
-        },
-        {
-          "inputs": [
-            {
               "internalType": "bytes4",
               "name": "interfaceId",
               "type": "bytes4"
@@ -579,26 +547,7 @@ window.blockmetadata = {
               "type": "string"
             }
           ],
-          "stateMutability": "view",
-          "type": "function"
-        },
-        {
-          "inputs": [
-            {
-              "internalType": "uint256",
-              "name": "",
-              "type": "uint256"
-            }
-          ],
-          "name": "tokenName",
-          "outputs": [
-            {
-              "internalType": "string",
-              "name": "",
-              "type": "string"
-            }
-          ],
-          "stateMutability": "view",
+          "stateMutability": "pure",
           "type": "function"
         },
         {
@@ -698,7 +647,7 @@ window.blockmetadata = {
         {
           "inputs": [
             {
-              "internalType": "contract IERC20",
+              "internalType": "contract IERC20Upgradeable",
               "name": "erc20",
               "type": "address"
             },
