@@ -122,7 +122,7 @@ span.highlight {
   display: flex;
   flex-direction: row;
   height: 52px;
-  margin: 25px 0;
+  margin: 5px 0 25px;
   min-height: 52px;
 }
 .form-input-wrapper input {
@@ -136,7 +136,6 @@ span.highlight {
   font-family: Gilroy, sans-serif;
   font-size: 24px;
   font-weight: 500;
-  height: 60px;
   line-height: 28px;
   outline: none;
   padding-left: 15px;
@@ -163,7 +162,6 @@ span.highlight {
 .countdown {
   display: flex;
   flex-flow: column;
-  height: 66px;
   justify-content: space-between;
 }
 .countdown-timer {
@@ -240,6 +238,31 @@ button.btn-outline-primary:disabled {
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
+/* Progress Bar */
+.progress-wrapper {
+  margin: 0px 0 20px 0;
+  width: 100%;
+}
+.progress-container {
+  background-color: #000;
+  border: var(--card-border-style);
+  border-radius: 15px;
+  height: 25px;
+  margin: 0px 0 8px 0;
+}
+.progress-fill {
+  width: 25%;
+  background-color: var(--card-border-color);
+  border-radius: 15px;
+  height: 100%;
+  box-shadow: 0 0 6px var(--card-border-color);
+}
+.progress-label-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
 /* UTILITIES */
 .text-center {
   text-align: center;
@@ -247,4 +270,7 @@ button.btn-outline-primary:disabled {
 }
 .capitalize {
   text-transform: capitalize;
+}
+.xsmall {
+  font-size: 10px;
 }
