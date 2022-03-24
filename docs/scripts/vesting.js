@@ -13,7 +13,8 @@
             blockapi.notify('success', 'Wallet disconnected')
         }
     }
-    // const contract = blockapi.contract('vesting');
+
+
     // COUNTDOWN TIMER
     const countdown = document.querySelector(".countdown");
     const expiredMessage = document.getElementById("countdown-expired-message");
@@ -44,10 +45,12 @@
         }
     }, 1000);
 
+
     // PROGRESS BAR & TOKEN COUNT
     const progressMeter = document.getElementById("progress-fill-box");
     const tokenAmountVested = document.getElementById("token-amount-vested")
     const totalTokenSupply = document.getElementById("total-token-supply")
+    const contract = blockapi.contract('vesting');
     async function updateProgressBar(_totalSupply, _amountOfTokensPurchased) {
         let totalSupplyStr = `of ${_totalSupply}M`;
         let tokensVestedStr = `${_amountOfTokensPurchased} $GRYPH Vesting`;
@@ -55,7 +58,6 @@
         progressMeter.style.width = `${value}%`;
         tokenAmountVested.innerText = tokensVestedStr;
         totalTokenSupply.innerText = totalSupplyStr;
-
     }
     // Gryph to ETH Converter
     const ethTotalContainer = document.querySelector(".total-container");
@@ -86,8 +88,9 @@
     if (!state.account) {
         blockapi.connect(blockmetadata, async function (newstate) {
             await connected(newstate)
-            // TODO: pull token data into progress bar
-            await updateProgressBar(100, 50)
+            const readTotalVested = await blockapi.read(contract, 'currentTokenLimit');
+            const readCurrentVested = await blockapi.read(contract, 'currentTokenAllocated')
+            await updateProgressBar(readTotalVested, readCurrentVested)
         }, disconnected)
         return false;
     }
