@@ -104,6 +104,11 @@ span.highlight {
   padding: 0 20px 12px;
   width: 100%;
 }
+.total-container {
+  display: none;
+  flex-flow: column;
+  width: 100%;
+}
 .card-action-box {
   width: 100%;
   border: var(--card-border-style);
@@ -180,6 +185,7 @@ span.highlight {
 }
 .card-action-box-subtext {
   display: flex;
+  flex-flow: row wrap;
   width: 100%;
   justify-content: space-between;
   padding: 15px 5px;
@@ -251,7 +257,7 @@ button.btn-outline-primary:disabled {
   margin: 0px 0 8px 0;
 }
 .progress-fill {
-  width: 25%;
+  width: 0;
   background-color: var(--card-border-color);
   border-radius: 15px;
   height: 100%;

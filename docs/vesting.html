@@ -111,11 +111,11 @@ At the end of each increment of tokens released for sale the next increment will
                       </div>
                       <div class="progress-wrapper">
                           <div class="progress-container">
-                              <div class="progress-fill"></div>
+                              <div id="progress-fill-box" class="progress-fill"></div>
                           </div>
                           <div class="progress-label-container">
-                              <span class="xsmall">100.000,000 $GRYPH Vesting</span>
-                              <span class="xsmall">of 300M</span>
+                              <span id="token-amount-vested" class="xsmall"></span>
+                              <span id="total-token-supply" class="xsmall"></span>
                           </div>
                       </div>
                         <form class="card-action-box" id="token-sale-form">
@@ -134,19 +134,21 @@ At the end of each increment of tokens released for sale the next increment will
                             </div>
                             <button class="btn-outline-primary">Review Order</button>
                         </form>
-                        <div class="card-action-box-subtext">
-                            <span class="small">Total :</span>
-                            <span class="highlight small">5.000000 ETH</span>
-                        </div>
-                         <div class="tooltip">
-                            <span class="label-text small">
-                                How is this calculated?
-                            </span>
-                            <span class="tooltiptext small">
-                                The purchase amount of $GRYPH is multiplied by
-                                0.000005
-                            </span>
-                        </div>
+                        <div id="eth-total-container" class="total-container">
+                            <div class="card-action-box-subtext">
+                                <span class="small">Total :</span>
+                                <span id="eth-total-value" class="highlight small"></span>
+                            </div>
+                            <div id="tooltip-container" class="tooltip">
+                                <span class="label-text small">
+                                    How is this calculated?
+                                </span>
+                                <span class="tooltiptext small">
+                                    The purchase amount of $GRYPH is multiplied by
+                                    0.000005
+                                </span>
+                            </div>
+                        </div> 
                   </div>
               </div>
           </div>
@@ -332,6 +334,7 @@ At the end of each increment of tokens released for sale the next increment will
       </nav>
     </footer>
     <script src="//cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+     <script type="text/javascript" src="/scripts/contracts-testnet.js"></script>
     <script type="text/javascript" src="/scripts/lib/blockapi.js"></script>
     <script type="text/javascript" src="/scripts/vesting.js"></script>
   </body>
