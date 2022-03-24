@@ -14,7 +14,35 @@
         }
     }
     // const contract = blockapi.contract('vesting');
-    // initCountdownTimer()
+    // COUNTDOWN TIMER
+    const countdown = document.querySelector(".countdown");
+    const expiredMessage = document.getElementById("countdown-expired-message");
+    const endSaleDate = new Date("March 25, 2022 15:37:25").getTime();
+    // Update the count down every 1 second
+    let x = setInterval(function () {
+        // Get today's date and time
+        let now = new Date().getTime();
+        // Find the distance between now and the count down date
+        let distance = endSaleDate - now;
+        // Time calculations for days, hours, minutes and seconds
+        let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        // Display the result in the element with id="demo"
+        document.getElementById("days").innerHTML = days;
+        document.getElementById("hours").innerHTML = hours;
+        document.getElementById("minutes").innerHTML = minutes;
+        document.getElementById("seconds").innerHTML = seconds;
+        // If the count down is finished, write some text
+        if (distance < 0) {
+            clearInterval(x);
+            expiredMessage.style.display = "flex";
+            expiredMessage.innerHTML = `<h2 class="small">Token Sale has ended</h2>`;
+        } else {
+            countdown.style.display = "flex";
+        }
+    }, 1000);
 
     // PROGRESS BAR & TOKEN COUNT
     const progressMeter = document.getElementById("progress-fill-box");

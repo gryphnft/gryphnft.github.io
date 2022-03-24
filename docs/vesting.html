@@ -68,11 +68,15 @@ At the end of each increment of tokens released for sale the next increment will
               <div class="column">
                   <div class="content card">
                       <div class="card-heading text-center">
-                          <h2 class="small">Token Sale Ends In:</h2>
+                           <div id="countdown-expired-message" class="countdown-expired small"> 
+                           </div>
                           <div class="countdown">
+                              <h2 class="small">Token Sale Ends In:</h2>
                             <div class="countdown-timer">
                                 <div class="countdown-digit-wrapper">
-                                        <span class="countdown-digit">
+                                        <span 
+                                        id="days"
+                                        class="countdown-digit">
                                             0
                                         </span>
                                         <span class="label small">
@@ -80,15 +84,16 @@ At the end of each increment of tokens released for sale the next increment will
                                         </span>
                                 </div>
                                 <div class="countdown-digit-wrapper">
-                                    <span class="countdown-digit">
+                                    <span id="hours" class="countdown-digit">
                                         0
                                     </span>
                                     <span class="label small">
                                         hours
                                     </span>
                                 </div>
-                                <div class="countdown-digit-wrapper">
-                                    <span class="countdown-digit">
+                                <div 
+                                 class="countdown-digit-wrapper">
+                                    <span id="minutes" class="countdown-digit">
                                         0
                                     </span>
                                     <span class="label small">
@@ -96,11 +101,11 @@ At the end of each increment of tokens released for sale the next increment will
                                     </span>
                                 </div>
                                 <div class="countdown-digit-wrapper">
-                                    <span class="countdown-digit">
+                                    <span id="seconds" class="countdown-digit">
                                         0
                                     </span>
                                     <span class="label small">
-                                        days
+                                        seconds
                                     </span>
                                 </div>
                             </div>
