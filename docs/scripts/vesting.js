@@ -13,6 +13,7 @@
             blockapi.notify('success', 'Wallet disconnected')
         }
     }
+    const contract = await blockapi.contract('vesting');
 
 
     // COUNTDOWN TIMER
@@ -50,10 +51,11 @@
     const progressMeter = document.getElementById("progress-fill-box");
     const tokenAmountVested = document.getElementById("token-amount-vested")
     const totalTokenSupply = document.getElementById("total-token-supply")
-    const contract = blockapi.contract('vesting');
     async function updateProgressBar(_totalSupply, _amountOfTokensPurchased) {
-        let totalSupplyStr = `of ${_totalSupply}M`;
-        let tokensVestedStr = `${_amountOfTokensPurchased} $GRYPH Vesting`;
+        let total = Number(_totalSupply).toLocaleString('en-US');
+        let purchased = Number(_amountOfTokensPurchased).toLocaleString('en-US');
+        let totalSupplyStr = `of ${total}M`;
+        let tokensVestedStr = `${purchased} $GRYPH Vesting`;
         let value = _totalSupply / _amountOfTokensPurchased;
         progressMeter.style.width = `${value}%`;
         tokenAmountVested.innerText = tokensVestedStr;
@@ -63,23 +65,25 @@
     const ethTotalContainer = document.querySelector(".total-container");
     const ethTotalValue = document.getElementById("eth-total-value");
     const toolTipContainer = document.getElementById("tooltip-container");
-    const tokenConversionMultiplier = 0.000005; //used to 
-    // EVENTS
+    const toolTipMultiplier = document.getElementById("tooltip-multiplier");
+    const currentTokenPrice = await blockapi.read(contract, 'currentTokenPrice');
     const purchaseInput = document.getElementById("amount");
     async function calculateToEth(e) {
-        let total = e.target.value;
-        let ethTotal = (total * tokenConversionMultiplier).toFixed(6);
-        if (total) {
+        let purchaseAmount = e.target.value;
+        // Convert gryph price(wei) into ether
+        let etherValueOfGryph = await blockapi.toEther(currentTokenPrice, 'string')
+        let ethTotal = (etherValueOfGryph * purchaseAmount).toFixed(6);
+        if (purchaseAmount) {
             ethTotalContainer.style.display = 'flex';
             ethTotalValue.textContent = `${ethTotal
                 } ETH`;
-
         } else {
             ethTotalContainer.style.display = 'none';
         }
         let amount = await e.target.value;
         console.log(amount);
     }
+    // EVENTS
     purchaseInput.addEventListener('keyup', calculateToEth);
     purchaseInput.addEventListener('onf', calculateToEth);
 
@@ -87,10 +91,10 @@
     // Connect to web3 & grab data from blockchain
     if (!state.account) {
         blockapi.connect(blockmetadata, async function (newstate) {
-            await connected(newstate)
+            await connected(newstate);
             const readTotalVested = await blockapi.read(contract, 'currentTokenLimit');
-            const readCurrentVested = await blockapi.read(contract, 'currentTokenAllocated')
-            await updateProgressBar(readTotalVested, readCurrentVested)
+            const readCurrentVested = await blockapi.read(contract, 'currentTokenAllocated');
+            await updateProgressBar(readTotalVested, readCurrentVested);
         }, disconnected)
         return false;
     }
