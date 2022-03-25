@@ -61,7 +61,8 @@
         tokenAmountVested.innerText = tokensVestedStr;
         totalTokenSupply.innerText = totalSupplyStr;
     }
-    // Gryph to ETH Converter
+    // CALCULATE GRYPH TO ETH
+    const orderButton = document.getElementById('order-button');
     const ethTotalContainer = document.querySelector(".total-container");
     const ethTotalValue = document.getElementById("eth-total-value");
     const toolTipContainer = document.getElementById("tooltip-container");
@@ -80,20 +81,36 @@
         } else {
             ethTotalContainer.style.display = 'none';
         }
-        let amount = await e.target.value;
-        console.log(amount);
+    }
+    async function numbersOnly(evt) {
+        if (evt.which != 8 && evt.which != 0 && evt.which < 48 || evt.which > 57) {
+            evt.preventDefault();
+        }
     }
     // EVENTS
-    purchaseInput.addEventListener('keyup', calculateToEth);
-    purchaseInput.addEventListener('onf', calculateToEth);
+    purchaseInput.addEventListener('input', function (e) {
+        if (parseInt(e.target.value) == 0
+            || (e.value?.length == undefined || e.value.length == 0)) {
+            orderButton.disabled = true
+        } else {
+            orderButton.disabled = false
+        }
+    })
+    purchaseInput.addEventListener('keypress', numbersOnly)
+    purchaseInput.addEventListener('keyup', calculateToEth)
+
 
     // BUY TOKENS
-    function buy() {
-        // e.preventDefault();
-        alert("Hey");
+    async function buy() {
+        if (!purchaseInput.value) {
+            blockapi.notify('error', 'Please enter a purchase amount')
+            return false
+        }
+        alert(purchaseInput.value);
+
     }
 
-    document.getElementById('order-button')
+    orderButton
         .addEventListener('click', buy, false)
     // Connect to web3 & grab data from blockchain
     if (!state.account) {
