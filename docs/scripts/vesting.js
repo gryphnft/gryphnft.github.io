@@ -87,7 +87,14 @@
     purchaseInput.addEventListener('keyup', calculateToEth);
     purchaseInput.addEventListener('onf', calculateToEth);
 
+    // BUY TOKENS
+    function buy() {
+        // e.preventDefault();
+        alert("Hey");
+    }
 
+    document.getElementById('order-button')
+        .addEventListener('click', buy, false)
     // Connect to web3 & grab data from blockchain
     if (!state.account) {
         blockapi.connect(blockmetadata, async function (newstate) {
@@ -98,4 +105,6 @@
         }, disconnected)
         return false;
     }
+
+
 })();
