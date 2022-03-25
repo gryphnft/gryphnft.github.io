@@ -109,6 +109,10 @@ span.highlight {
   flex-flow: column;
   width: 100%;
 }
+#loading-box {
+  /* to show processing order message...*/
+  display: none;
+}
 .card-action-box {
   width: 100%;
   border: var(--card-border-style);
@@ -213,7 +217,7 @@ button.btn-outline-primary:disabled {
   background-color: var(--card-bg-color);
   border: none;
   color: var(--gray-light);
-  cursor: pointer;
+  cursor: not-allowed;
 }
 /* Tooltip container */
 .tooltip {
