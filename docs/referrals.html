@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <title>GRYPH Namespace Registration</title>
-    <meta property="og:title" content="GRYPH Namespace Registration" />
+    <title>GRYPH Namespace Referrer Program</title>
+    <meta property="og:title" content="GRYPH Referrer Program" />
     <meta property="og:image" content="https://gryphcdn.s3.ap-southeast-1.amazonaws.com/static/2022/authentic-streetwear.jpg" />
     <meta property="og:url" content="https://marketplace.gry.ph/gns" />
     <meta property="og:type" content="website" />
@@ -19,7 +19,7 @@
 
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <link rel="stylesheet" type="text/css" href="/styles/theme.css?v2" />
-    <link rel="stylesheet" type="text/css" href="/styles/gns.css?v2" />
+    <link rel="stylesheet" type="text/css" href="/styles/referrals.css?v2" />
   </head>
   <body>
     <header class="head">
@@ -48,34 +48,24 @@
     <main class="body">
       <section class="section section-1">
         <div class="container">
-          <h1><span class="label">GRY.PH</span> <span class="title">Naming Service</span></h1>
-          <h3>Decentralized Naming for sellers, buyers and art collections.</h3>
-          <form id="registration">
-            <img class="logo" width="35" src="https://gryphcdn.s3.ap-southeast-1.amazonaws.com/static/2022/gryph-8bit-7.png" />
-            <label>GNS</label>
-            <input id="namespace" type="text" placeholder="ex. mycollection" />
-            <span class="domain">.gry.ph</span>
-            <button>Reserve</button>
-          </form>
-
-          <div id="referral" class="referral">
-            <a class="toggle" data-do="toggle-referrer" data-on="click" href="javascript:void(0)">
-              Have a referral code?
-            </a>
-            <div class="visibility">
-              <input id="referrer" type="text" placeholder="ex. 0x00000000000..." />
-              <a class="note" href="./referrals.html">Want to refer?</a>
+          <div id="connected">
+            <div class="balance">
+              <h1>Your rewards balance</h1>
+              <div id="rewards">Loading&hellip;</div>
+              <a class="btn-primary" data-do="redeem" data-on="click">Redeem Now</a>
             </div>
+          </div>
+          <div id="disconnected">
+            <h1>Namespace Referrals</h1>
+            <p>
+              Earn 5% commission in Ethereum by encouraging your 
+              friends to buy a namespace. 
+            </p>
+            <a class="btn-primary" data-do="connect" data-on="click">Check Your Balance</a>
           </div>
         </div>
       </section>
       <section class="section section-2">
-        <p>
-          GRY.PH is working on launching a one of a kind, cross chain 
-          marketplace and namespaces are a part of the services it 
-          provides. These namespaces are ER721 compliant NFTs using 
-          images generated and stored on chain.
-        </p>
         <nav class="proof">
           <a href="https://testnets.opensea.io/collection/gryph-namespaces-v4">
             <img src="https://gryphcdn.s3.ap-southeast-1.amazonaws.com/static/2022/logo-opensea.png">
@@ -104,100 +94,73 @@
         <div class="container">
           <h2>Frequent Questions</h2>
           <div>
-            <strong>Why should I reserve a name?</strong>
-            <p>
-              If you are an artist/creator/collector/trader, you will 
-              want to reserve your desired name early in order to use it 
-              when we launch our NFT marketplace. Names reserved before 
-              the official launch will have no expiration.
-            </p>
+            <strong>How do I refer?</strong>
+            <ol>
+              <li>
+                Create a wallet using <a href="https://metamask.io/" target="_blank">Metamask</a>
+              </li>
+              <li>
+                Refer people to <a href="./gns.html">https://gry.ph/gns</a> 
+                and tell them to look for and click &quot;Have a referral code?&quot;
+              </li>
+              <li>
+                Give them your Ethereum Wallet address from your Metamask 
+                wallet. It should start with &quot;0x&hellip;&quot;
+              </li>
+              <li>
+                When your referrals purchase a namespace, you will be creditted with rewards.
+              </li>
+            </ol>
           </div>
           <div>
-            <strong>What can I do with a namespace?</strong>
-            <p>
-              Namespaces will be used on the new marketplace as an easy 
-              way for others to remember and access your collection or 
-              profile easier. All namespaces that are NFT collections 
-              acquired through this medium will be featured and promoted 
-              throughout the marketplace.
-            </p>
-          </div>
-          <div>
-            <strong>How much does it cost?</strong>
+            <strong>How much do I earn?</strong>
             <ul>
-              <li>0.192 ether for 4 letters</li>
-              <li>0.096 ether for 5 letters</li>
-              <li>0.048 ether for 6 letters</li>
-              <li>0.024 ether for 7 letters</li>
-              <li>0.012 ether for 8 letters</li>
-              <li>0.006 ether for 9 letters</li>
-              <li>0.003 ether for 10 letters or more</li>
+              <li>0.0096 ether for every 4 letter name</li>
+              <li>0.0048 ether for every 5 letter name</li>
+              <li>0.0024 ether for every 6 letter name</li>
+              <li>0.0012 ether for every 7 letter name</li>
+              <li>0.0006 ether for every 8 letter name</li>
+              <li>0.0003 ether for every 9 letter name</li>
+              <li>0.00015 ether for every 10 letters names or more</li>
             </ul>
           </div>
           <div>
-            <strong>Why is it more expensive compared to ENS?</strong>
+            <strong>When can I redeem my rewards?</strong>
             <p>
-              With ENS you have to renew every year. These namespaces do 
-              not expire and this offer will only last till the launch of 
-              our NFT marketplace.
+              When your rewards reach 0.0096 ethers or more, you can redeem at anytime.
             </p>
           </div>
           <div>
-            <strong>When will I be able to use my name?</strong>
+            <strong>Why can't I redeem under Ξ 0.0096 ?</strong>
             <p>
-              Your name can be immediately used when the NFT marketplace 
-              is launched.
+              It's just a way to prevent gamifying this program and getting self discounts.
             </p>
           </div>
           <div>
-            <strong>Do I need to renew every year?</strong>
+            <strong>Is there gas cost when I redeem rewards?</strong>
             <p>
-              While the NFT marketplace is being launched, names reserved 
-              will never need to be renewed.
+              Yes. Rewards are stored and redeemable on the blockchain 
+              so there is gas involved.
             </p>
           </div>
           <div>
-            <strong>What happens if I sell or give away my name?</strong>
+            <strong>Can I see the contract?</strong>
             <p>
-              The ownership rights will pass to the new owner.
+              You sure can! <a href="https://rinkeby.etherscan.io/address/0x12eB3F8D4AaD2E69f3BDEEFdD8BAFf6547B80bd9#readContract" target="_blank">
+                https://rinkeby.etherscan.io/address/0x12eB3F8D4AaD2E69f3BDEEFdD8BAFf6547B80bd9#readContract
+              </a>
             </p>
           </div>
           <div>
-            <strong>Do we need to do anything to ensure the continued use of my name?</strong>
+            <strong>Will this program expire?</strong>
             <p>
-              Besides holding the NFT, no.
+              This program expires when the namespace service is no longer available.
             </p>
           </div>
           <div>
-            <strong>Can I trade my name on other NFT exchanges?</strong>
+            <strong>Can I redeem rewards after the program expires?</strong>
             <p>
-              Yes you can.
-            </p>
-          </div>
-          <div>
-            <strong>How are funds earned from this service used?</strong>
-            <p>
-              Funds will be used for the continuing development of the 
-              NFT marketplace.
-            </p>
-          </div>
-          <div>
-            <strong>What prohibits large scale name grabbing besides registration fees?</strong>
-            <p>The cost of doing this and gas is the only limitation in place.</p>
-          </div>
-          <div>
-            <strong>Can my name ever be take away from me?</strong>
-            <p>
-              In small cases where the name is in breach of a registered 
-              trademark it may be taken away. In these cases you will be 
-              compensated for your loss.
-            </p>
-          </div>
-          <div>
-            <strong>How can I get a 2 or 3 letter name?</strong>
-            <p>
-              Right now the only way is to either contact us or wait for 
-              hyper exclusive airdrops.
+              Yes. Even if the program expires, you can still redeem.
             </p>
           </div>
         </div>
@@ -236,6 +199,6 @@
     <script type="text/javascript" src="/scripts/lib/doon.js"></script>
     <script type="text/javascript" src="/scripts/lib/blockapi.js"></script>
     <script type="text/javascript" src="/scripts/contracts-mainnet.js?v2"></script>
-    <script type="text/javascript" src="/scripts/gns.js?v2"></script>
+    <script type="text/javascript" src="/scripts/referrals.js?v2"></script>
   </body>
 </html>

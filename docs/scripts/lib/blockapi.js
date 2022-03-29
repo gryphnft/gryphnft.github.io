@@ -29,15 +29,15 @@ window.blockapi = {
   },
 
   toEther(num, format) {
-    const web3 = this.web3()
+    const libWeb3 = this.web3()
     if (format === 'string') {
-      return web3.utils.fromWei(String(num)).toString()
+      return libWeb3.utils.fromWei(String(num)).toString()
     } else if (format === 'comma') {
-      return web3.utils.fromWei(String(num)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      return libWeb3.utils.fromWei(String(num)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     } else if (format === 'int') {
-      return parseInt(web3.utils.fromWei(String(num)).toString());
+      return parseFloat(libWeb3.utils.fromWei(String(num)).toString());
     }
-    return web3.utils.fromWei(String(num))
+    return libWeb3.utils.fromWei(String(num))
   },
 
   toWei(num) {
@@ -53,14 +53,68 @@ window.blockapi = {
   },
 
   contract(name) {
-    const web3 = this.web3()
-    return new web3.eth.Contract(
+    const libWeb3 = this.web3()
+    return new libWeb3.eth.Contract(
       blockmetadata.contracts[name].abi,
       blockmetadata.contracts[name].address
     )
   },
 
+  async getWalletAddress() {
+    return (await window.ethereum.request({ method: 'eth_requestAccounts' }))[0]
+  },
+
+  async addNetwork({ chain_id, chain_name, chain_symbol, chain_uri, chain_scan }) {
+    await window.ethereum.request({
+      method: 'wallet_addEthereumChain',
+      params: [{ 
+        chainId: `0x${chain_id.toString(16)}`, 
+        chainName: chain_name,
+        rpcUrls:[ chain_uri ],                   
+        blockExplorerUrls:[ chain_scan ],  
+        nativeCurrency: { 
+          symbol: chain_symbol,   
+          decimals: 18
+        }        
+      }]
+    })
+  },
+
+  async switchNetwork({ chain_id }) {
+    await window.ethereum.request({
+      method: 'wallet_switchEthereumChain',
+      params: [{ chainId: `0x${chain_id.toString(16)}` }],
+    });
+  },
+
   connect(blockmetadata, connected, disconnected) {
+    const libWeb3 = this.web3()
+    const getState = async(account) => {
+      const state = { account }
+      if (Array.isArray(blockmetadata.contract?.abi)
+        && typeof blockmetadata.contract?.address === 'string'
+      ) {
+        state.contract = new libWeb3.eth.Contract(
+          blockmetadata.contract.abi,
+          blockmetadata.contract.address
+        )
+      }
+
+      if (typeof blockmetadata.contracts === 'object') {
+        for (const key in blockmetadata.contracts) {
+          if (Array.isArray(blockmetadata.contracts[key]?.abi)
+            && typeof blockmetadata.contracts[key]?.address === 'string'
+          ) {
+            state[key] = new libWeb3.eth.Contract(
+              blockmetadata.contracts[key].abi,
+              blockmetadata.contracts[key].address
+            )
+          }
+        }
+      }
+
+      return state
+    }
     const validate = async(action, param) => {
       if (action === 'accountsChanged') {
         if (!Array.isArray(param) || param.length === 0) {
@@ -73,44 +127,41 @@ window.blockapi = {
           message: 'Please install <a href="https://metamask.io/" target="_blank">MetaMask</a> and refresh this page.' 
         })
       }
-      try {
-        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+
+      try {//matching network and connecting
+        const account = await this.getWalletAddress()
         const networkId = await window.ethereum.request({ method: 'net_version' });
         if (networkId == blockmetadata.chain_id) {
-          const web3 = this.web3()
-          const results = {
-            account: accounts[0],
-            web3: web3
-          }
-
-          if (Array.isArray(blockmetadata.contract?.abi)
-            && typeof blockmetadata.contract?.address === 'string'
-          ) {
-            results.contract = new web3.eth.Contract(
-              blockmetadata.contract.abi,
-              blockmetadata.contract.address
-            )
-          }
-
-          if (typeof blockmetadata.contracts === 'object') {
-            for (const key in blockmetadata.contracts) {
-              if (Array.isArray(blockmetadata.contracts[key]?.abi)
-                && typeof blockmetadata.contracts[key]?.address === 'string'
-              ) {
-                results[key] = new web3.eth.Contract(
-                  blockmetadata.contracts[key].abi,
-                  blockmetadata.contracts[key].address
-                )
-              }
-            }
-          }
-          return connected(results)
+          return connected(await getState(account))
         }
-        
-        return disconnected(new Error(`Please change network to ${blockmetadata.chain_name}.`))
       } catch (e) {
         return disconnected(e)
       }
+
+      try {//auto switch network, then matching network and connecting
+        await this.switchNetwork(blockmetadata)
+        const account = await this.getWalletAddress()
+        const networkId = await window.ethereum.request({ method: 'net_version' });
+        if (networkId == blockmetadata.chain_id) {
+          return connected(await getState(account))
+        }
+      } catch (e) {
+        return disconnected(e)
+      }
+
+      try {//adding network, auto switch network, then matching network and connecting
+        await this.addNetwork(blockmetadata)
+        await this.switchNetwork(blockmetadata)
+        const account = await this.getWalletAddress()
+        const networkId = await window.ethereum.request({ method: 'net_version' });
+        if (networkId == blockmetadata.chain_id) {
+          return connected(await getState(account))
+        }
+      } catch (e) {
+        return disconnected(e)
+      }
+
+      return disconnected(e)
     }
 
     if (window.ethereum?.isMetaMask && typeof window.__blockAPIListening === 'undefined') {
@@ -120,7 +171,7 @@ window.blockapi = {
       window.ethereum.on('accountsChanged', validate.bind(null, 'accountsChanged'))
       window.__blockAPIListening = true
     }
-    
+
     validate('init')
   },
 

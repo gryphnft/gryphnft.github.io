@@ -1,75 +1,28 @@
 window.blockmetadata = {
   "chain_id": 4,
+  "chain_symbol": "ETH",
   "chain_name": "Ethereum Rinkeby Testnet",
+  "chain_uri": "https://rinkeby.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
   "chain_marketplace": "https://testnets.opensea.io/assets",
   "chain_scan": "https://rinkeby.etherscan.io",
   "contracts": {
-    "namespaces": {
-      "address": "0xEa452B56f2B2c6b83F7D25b95E13a46737B74AE6",
+    "gns_registry": {
+      "address": "0x113Ec9d9F63fc337a21Cd95e5F6AE7a2B4d7B25A",
       "abi": [
         {
-          "inputs": [],
-          "name": "ApprovalOwnerIsOperator",
-          "type": "error"
+          "inputs": [
+            {
+              "internalType": "string",
+              "name": "uri",
+              "type": "string"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "constructor"
         },
         {
           "inputs": [],
-          "name": "ApprovalToCurrentOwner",
-          "type": "error"
-        },
-        {
-          "inputs": [],
-          "name": "BalanceQueryZeroAddress",
-          "type": "error"
-        },
-        {
-          "inputs": [],
-          "name": "ERC721ReceiverNotReceived",
-          "type": "error"
-        },
-        {
-          "inputs": [],
-          "name": "ExistentToken",
-          "type": "error"
-        },
-        {
-          "inputs": [],
-          "name": "InvalidAmountSent",
-          "type": "error"
-        },
-        {
-          "inputs": [],
-          "name": "InvalidName",
-          "type": "error"
-        },
-        {
-          "inputs": [],
-          "name": "NonExistentToken",
-          "type": "error"
-        },
-        {
-          "inputs": [],
-          "name": "NotERC721Receiver",
-          "type": "error"
-        },
-        {
-          "inputs": [],
-          "name": "NotOwnerOrApproved",
-          "type": "error"
-        },
-        {
-          "inputs": [],
-          "name": "TransferFromNotOwner",
-          "type": "error"
-        },
-        {
-          "inputs": [],
-          "name": "TransferToZeroAddress",
-          "type": "error"
-        },
-        {
-          "inputs": [],
-          "name": "TransferWhilePaused",
+          "name": "InvalidCall",
           "type": "error"
         },
         {
@@ -159,6 +112,81 @@ window.blockmetadata = {
           "inputs": [
             {
               "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "previousAdminRole",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "newAdminRole",
+              "type": "bytes32"
+            }
+          ],
+          "name": "RoleAdminChanged",
+          "type": "event"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "sender",
+              "type": "address"
+            }
+          ],
+          "name": "RoleGranted",
+          "type": "event"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "sender",
+              "type": "address"
+            }
+          ],
+          "name": "RoleRevoked",
+          "type": "event"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
               "internalType": "address",
               "name": "from",
               "type": "address"
@@ -191,6 +219,45 @@ window.blockmetadata = {
           ],
           "name": "Unpaused",
           "type": "event"
+        },
+        {
+          "inputs": [],
+          "name": "CURATOR_ROLE",
+          "outputs": [
+            {
+              "internalType": "bytes32",
+              "name": "",
+              "type": "bytes32"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "DEFAULT_ADMIN_ROLE",
+          "outputs": [
+            {
+              "internalType": "bytes32",
+              "name": "",
+              "type": "bytes32"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "MINTER_ROLE",
+          "outputs": [
+            {
+              "internalType": "bytes32",
+              "name": "",
+              "type": "bytes32"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
         },
         {
           "inputs": [
@@ -253,6 +320,11 @@ window.blockmetadata = {
               "internalType": "string[]",
               "name": "names",
               "type": "string[]"
+            },
+            {
+              "internalType": "bool",
+              "name": "banned",
+              "type": "bool"
             }
           ],
           "name": "blacklist",
@@ -277,24 +349,6 @@ window.blockmetadata = {
             }
           ],
           "stateMutability": "view",
-          "type": "function"
-        },
-        {
-          "inputs": [
-            {
-              "internalType": "address",
-              "name": "recipient",
-              "type": "address"
-            },
-            {
-              "internalType": "string",
-              "name": "namespace",
-              "type": "string"
-            }
-          ],
-          "name": "buy",
-          "outputs": [],
-          "stateMutability": "payable",
           "type": "function"
         },
         {
@@ -332,14 +386,105 @@ window.blockmetadata = {
         {
           "inputs": [
             {
-              "internalType": "string",
-              "name": "uri",
-              "type": "string"
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
             }
           ],
-          "name": "initialize",
+          "name": "getRoleAdmin",
+          "outputs": [
+            {
+              "internalType": "bytes32",
+              "name": "",
+              "type": "bytes32"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "uint256",
+              "name": "index",
+              "type": "uint256"
+            }
+          ],
+          "name": "getRoleMember",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            }
+          ],
+          "name": "getRoleMemberCount",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            }
+          ],
+          "name": "grantRole",
           "outputs": [],
           "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            }
+          ],
+          "name": "hasRole",
+          "outputs": [
+            {
+              "internalType": "bool",
+              "name": "",
+              "type": "bool"
+            }
+          ],
+          "stateMutability": "view",
           "type": "function"
         },
         {
@@ -447,6 +592,71 @@ window.blockmetadata = {
           "name": "renounceOwnership",
           "outputs": [],
           "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            }
+          ],
+          "name": "renounceRole",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            }
+          ],
+          "name": "revokeRole",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "salePrice",
+              "type": "uint256"
+            }
+          ],
+          "name": "royaltyInfo",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "receiver",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "royaltyAmount",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
           "type": "function"
         },
         {
@@ -617,49 +827,193 @@ window.blockmetadata = {
           "outputs": [],
           "stateMutability": "nonpayable",
           "type": "function"
-        },
+        }
+      ]
+    },
+    "gns_sale": {
+      "address": "0x12eB3F8D4AaD2E69f3BDEEFdD8BAFf6547B80bd9",
+      "abi": [
         {
           "inputs": [
             {
-              "internalType": "string[]",
-              "name": "names",
-              "type": "string[]"
-            }
-          ],
-          "name": "whitelist",
-          "outputs": [],
-          "stateMutability": "nonpayable",
-          "type": "function"
-        },
-        {
-          "inputs": [
-            {
-              "internalType": "address",
-              "name": "recipient",
+              "internalType": "contract INamespaceMinter",
+              "name": "_registry",
               "type": "address"
             }
           ],
-          "name": "withdraw",
-          "outputs": [],
           "stateMutability": "nonpayable",
-          "type": "function"
+          "type": "constructor"
         },
         {
+          "inputs": [],
+          "name": "InvalidCall",
+          "type": "error"
+        },
+        {
+          "anonymous": false,
           "inputs": [
             {
-              "internalType": "contract IERC20Upgradeable",
-              "name": "erc20",
+              "indexed": true,
+              "internalType": "address",
+              "name": "previousOwner",
               "type": "address"
             },
             {
+              "indexed": true,
               "internalType": "address",
-              "name": "recipient",
+              "name": "newOwner",
               "type": "address"
-            },
+            }
+          ],
+          "name": "OwnershipTransferred",
+          "type": "event"
+        },
+        {
+          "inputs": [],
+          "name": "COMMISSION",
+          "outputs": [
             {
               "internalType": "uint256",
-              "name": "amount",
+              "name": "",
               "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "recipient",
+              "type": "address"
+            },
+            {
+              "internalType": "string",
+              "name": "namespace",
+              "type": "string"
+            },
+            {
+              "internalType": "address",
+              "name": "referrer",
+              "type": "address"
+            }
+          ],
+          "name": "buy",
+          "outputs": [],
+          "stateMutability": "payable",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "minimumRedeem",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "owner",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "recipient",
+              "type": "address"
+            }
+          ],
+          "name": "redeem",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "registry",
+          "outputs": [
+            {
+              "internalType": "contract INamespaceMinter",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "renounceOwnership",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "name": "rewards",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "transferOwnership",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "minimum",
+              "type": "uint256"
+            }
+          ],
+          "name": "updateMinimumRedeem",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "recipient",
+              "type": "address"
             }
           ],
           "name": "withdraw",

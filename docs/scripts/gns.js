@@ -1,4 +1,5 @@
 (async() => {
+  const libWeb3 = blockapi.web3()
   const state = { connected: false }
   const connected = async function(newstate) {
     Object.assign(state, newstate, { connected: true })
@@ -13,9 +14,13 @@
     }
   }
 
-  const contract = blockapi.contract('namespaces')
+  const sale = blockapi.contract('gns_sale')
+  const registry = blockapi.contract('gns_registry')
   const form = document.getElementById('registration')
-  const input = document.getElementById('namespace')
+  const input = {
+    namespace: document.getElementById('namespace'),
+    referrer: document.getElementById('referrer')
+  }
   const prices = [
     blockapi.toWei(0.192).toString(), //4 letters
     blockapi.toWei(0.096).toString(), //5 letters
@@ -28,7 +33,7 @@
 
   async function query() {
     //local error handling
-    const name = input.value.toLowerCase()
+    const name = input.namespace.value.toLowerCase()
     const valid = /^[a-z0-9\_\-]{4,20}$/.test(name)
 
     if (!valid) {
@@ -44,14 +49,14 @@
       return false
     }
 
-    const tokenId = state.web3.utils.toBN(state.web3.utils.keccak256(name)).toString()
+    const tokenId = libWeb3.utils.toBN(libWeb3.utils.keccak256(name)).toString()
     try {
-      if (await blockapi.read(contract, 'ownerOf', tokenId)) {
+      if (await blockapi.read(registry, 'ownerOf', tokenId)) {
         blockapi.notify('error', 'Name is already reserved')
         return false
       }
     } catch(e) {
-      blockapi.notify('success', `${value} is available!`)
+      blockapi.notify('success', `${name} is available!`)
     }
 
     return true
@@ -61,48 +66,53 @@
     e.preventDefault()
 
     //local error handling
-    const name = input.value.toLowerCase()
-    const valid = /^[a-z0-9\_\-]{4,20}$/.test(name)
+    const name = input.namespace.value.toLowerCase()
+    const referrer = input.referrer.value.trim().length 
+      ? input.referrer.value.trim()
+      : '0x0000000000000000000000000000000000000000'
 
-    if (!valid) {
+    if (!/^[a-z0-9\_\-]{4,20}$/.test(name)) {
       blockapi.notify('error', 'Name is invalid')
+      return false
+    } else if (/^0x[a-f0-9\_\-]{43,44}$/.test(referrer.toLowerCase())) {
+      blockapi.notify('error', 'Referrer is invalid')
       return false
     }
 
     if (!state.account) {
       blockapi.connect(blockmetadata, async function(newstate) {
         await connected(newstate)
-        await query()
+        await buy(e)
       }, disconnected)
       return false
     }
 
-    const tokenId = state.web3.utils.toBN(state.web3.utils.keccak256(name)).toString()
+    const tokenId = libWeb3.utils.toBN(libWeb3.utils.keccak256(name)).toString()
     try {
-      if (await blockapi.read(contract, 'ownerOf', tokenId)) {
+      if (await blockapi.read(registry, 'ownerOf', tokenId)) {
         blockapi.notify('error', 'Name is already reserved')
         return false
       }
     } catch(e) {
-      blockapi.notify('success', `${value} is available!`)
+      blockapi.notify('success', `${name} is available!`)
     }
 
     //get price
-    const index = name.length - 4;
-    if (index >= prices.length) {
-      index = prices.length - 1;
-    }
+    const index = (name.length - 4) >= prices.length 
+      ? prices.length - 1 
+      : name.length - 4;
 
     let rpc;
     try {
       rpc = blockapi.send(
-        contract, 
+        sale, 
         state.account, 
-        'buy(address,string)', 
+        'buy(address,string,address)', 
         prices[index], //value
         //args
         state.account, 
-        name
+        name,
+        referrer
       )
     } catch(e) {
       blockapi.notify('error', e.message)
@@ -114,7 +124,7 @@
         'success', 
         `Transaction started for "${name}" on <a href="${blockmetadata.chain_scan}/tx/${hash}" target="_blank">
           etherscan.com
-        </a>`,
+        </a>. Please stay on this page and wait for 10 confirmations...`,
         1000000
       )
     })
@@ -126,20 +136,21 @@
       </a>`
       if (confirmationNumber > 6) {
         const marketplace = blockmetadata.chain_marketplace
-        const contractAddress = blockmetadata.contracts.namespaces.address
+        const contractAddress = blockmetadata.contracts.gns_registry.address
         message += ` and you should also be able view on <a href="${marketplace}/${contractAddress}/${tokenId}" target="_blank">
           OpenSea
         </a>`
       }
+      message += '. Please stay on this page and wait for 10 confirmations...'
       blockapi.notify('success', message, 1000000)
     })
 
     rpc.on('receipt', function(receipt) {
       blockapi.notify(
         'success', 
-        `Please confirm "${name}" on <a href="${blockmetadata.chain_scan}/tx/${receipt.transactionHash}" target="_blank">
+        `Confirming "${name}" on <a href="${blockmetadata.chain_scan}/tx/${receipt.transactionHash}" target="_blank">
           etherscan.com
-        </a>`,
+        </a>. Please stay on this page and wait for 10 confirmations...`,
         1000000
       )
     })
@@ -154,13 +165,17 @@
   }
 
   form.addEventListener('submit', buy)
+  window.addEventListener('toggle-referrer-click', () => {
+    document.querySelector('#referral .visibility').style.display = 'block'
+  })
 
   const params = new Proxy(new URLSearchParams(window.location.search), {
     get: (searchParams, prop) => searchParams.get(prop),
   });
-  const value = params.name
+
+  const value = params.name || ''
   if (value.length) {
-    input.value = value
+    input.namespace.value = value
     await query()
   }
 
