@@ -178,6 +178,10 @@
     input.namespace.value = value
     await query()
   }
+  
+  if (params.code) {
+    input.referrer.value = params.code
+  }
 
   window.doon('body')
 })()
