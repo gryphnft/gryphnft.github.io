@@ -107,6 +107,7 @@ html, body {
 .section-3 p,
 .section-3 li {
   color: #CDCDCD;
+  word-break: break-all;
 }
 
 @media(max-width: 600px) {
