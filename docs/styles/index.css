@@ -276,6 +276,7 @@ html, body {
   background-color: #FFFFFF;
   display: flex;
   margin: auto;
+  overflow-x: auto;
 }
 
 .section-4 form > * {

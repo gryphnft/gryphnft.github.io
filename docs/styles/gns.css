@@ -50,6 +50,7 @@ html, body {
   background-color: #FFFFFF;
   display: flex;
   margin: auto;
+  overflow-x: auto;
 }
 
 .section-1 form > * {
@@ -118,7 +119,7 @@ html, body {
 .section-1 .referral input {
   padding: 10px 20px;
   max-width: 300px;
-  width: 100%;
+  width: calc(100% - 40px);
 }
 
 .section-1 .note {
