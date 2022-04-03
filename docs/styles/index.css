@@ -443,3 +443,15 @@ html, body {
   }
 }
 
+@media(max-width: 500px) {
+  .section-4 form .logo {
+    display: none;
+  }
+  .section-4 form label {
+    display: none;
+  }
+  .section-4 form input {
+    padding-left: 20px;
+  }
+}
+
