@@ -22,13 +22,10 @@
     referrer: document.getElementById('referrer')
   }
   const prices = [
-    blockapi.toWei(0.192).toString(), //4 letters
-    blockapi.toWei(0.096).toString(), //5 letters
-    blockapi.toWei(0.048).toString(), //6 letters 
-    blockapi.toWei(0.024).toString(), //7 letters
-    blockapi.toWei(0.012).toString(), //8 letters
-    blockapi.toWei(0.006).toString(), //9 letters
-    blockapi.toWei(0.003).toString()  //10 letters or more
+    blockapi.toWei(0.1).toString(), //3 letters
+    blockapi.toWei(0.05).toString(), //4 letters
+    blockapi.toWei(0.01).toString(), //5 letters 
+    blockapi.toWei(0.005).toString(), //6 letters
   ]
 
   async function query() {
@@ -98,9 +95,9 @@
     }
 
     //get price
-    const index = (name.length - 4) >= prices.length 
+    const index = (name.length - 3) >= prices.length 
       ? prices.length - 1 
-      : name.length - 4;
+      : name.length - 3;
 
     let rpc;
     try {
