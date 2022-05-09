@@ -68,7 +68,7 @@
       ? input.referrer.value.trim()
       : '0x0000000000000000000000000000000000000000'
 
-    if (!/^[a-z0-9\_\-]{4,20}$/.test(name)) {
+    if (!/^[a-z0-9\_\-]{3,20}$/.test(name)) {
       blockapi.notify('error', 'Name is invalid')
       return false
     } else if (/^0x[a-f0-9\_\-]{43,44}$/.test(referrer.toLowerCase())) {
