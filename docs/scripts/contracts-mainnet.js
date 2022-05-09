@@ -831,7 +831,7 @@ window.blockmetadata = {
       ]
     },
     "gns_sale": {
-      "address": "0x390ded57De5a9A6Ff38ac56e32da718e9e8202Df",
+      "address": "0x1B917931bfdbd6bA7A44771d035E7ca70610487A",
       "abi": [
         {
           "inputs": [
@@ -869,19 +869,6 @@ window.blockmetadata = {
           "type": "event"
         },
         {
-          "inputs": [],
-          "name": "COMMISSION",
-          "outputs": [
-            {
-              "internalType": "uint256",
-              "name": "",
-              "type": "uint256"
-            }
-          ],
-          "stateMutability": "view",
-          "type": "function"
-        },
-        {
           "inputs": [
             {
               "internalType": "address",
@@ -902,6 +889,19 @@ window.blockmetadata = {
           "name": "buy",
           "outputs": [],
           "stateMutability": "payable",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "commission",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
           "type": "function"
         },
         {
@@ -991,6 +991,19 @@ window.blockmetadata = {
             }
           ],
           "name": "transferOwnership",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "_commission",
+              "type": "uint256"
+            }
+          ],
+          "name": "updateCommission",
           "outputs": [],
           "stateMutability": "nonpayable",
           "type": "function"
