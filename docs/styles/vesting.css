@@ -1,0 +1,290 @@
+/* GLOBAL RESETS */
+body,
+html,
+* {
+  box-sizing: border-box;
+}
+/* Remove number incrementor from input*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* Chrome, Safari, Edge, Opera */
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  /* Firefox */
+  -moz-appearance: textfield;
+}
+.content p {
+  padding: 7.5px 0;
+}
+/* VARIABLES */
+:root {
+  --card-bg-color: rgb(27 27 27);
+  --yellow-shadow: rgb(251 191 36 / 31%);
+  --card-border-style: 1px solid rgb(251 191 36 / 31%);
+  --card-border-color: rgb(251, 190, 36);
+  --gray-light: #8a8686;
+}
+hr {
+  color: var(--gray-light);
+}
+span {
+  display: flex;
+  font-size: 18px;
+  /* margin-bottom: 30px; */
+  text-transform: none;
+  align-items: center;
+}
+span.label {
+  color: #ffffff;
+  font-weight: bold;
+}
+span.highlight {
+  color: rgb(251, 191, 36);
+  font-size: 15px;
+  font-family: "Press Start 2P", sans-serif;
+  margin: 2px 5px 0 0;
+}
+
+.small {
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.body {
+  background-color: #000000;
+  padding: 60px 20px;
+}
+.container {
+  margin: auto;
+  max-width: 1024px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.column {
+  display: flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: -webkit-flex;
+  flex: 1 1 45%;
+  flex-flow: column wrap;
+  height: auto;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  -webkit-flex-flow: column wrap;
+}
+.content {
+  align-items: flex-start;
+  display: flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: -webkit-flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+  -webkit-flex-flow: column wrap;
+  width: 100%;
+  max-width: 640px;
+}
+.card {
+  background-color: var(--card-bg-color);
+  border: var(--card-border-style);
+  border-radius: 8px;
+  inset: 0px;
+  opacity: 1;
+  transform: translate3d(0%, 0px, 0px);
+  padding: 10px 8px;
+  box-shadow: 0 0 30px rgb(251 187 36 / 26%);
+  max-width: 320px;
+}
+.card-heading {
+  padding: 0 20px 12px;
+  width: 100%;
+}
+.total-container {
+  display: none;
+  flex-flow: column;
+  width: 100%;
+}
+#loading-box {
+  /* to show processing order message...*/
+  display: none;
+}
+.card-action-box {
+  width: 100%;
+  border: var(--card-border-style);
+  background-color: rgb(0, 0, 0);
+  border-radius: 8px;
+  padding: 15px 20px;
+  display: flex;
+  flex: 1 1 0%;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+}
+.form-input-wrapper {
+  -webkit-box-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  height: 52px;
+  margin: 5px 0 25px;
+  min-height: 52px;
+}
+.form-input-wrapper input {
+  /* height: 52px; */
+  background: var(--card-bg-color);
+  border: 1px solid transparent;
+  border-radius: 9px;
+  box-sizing: border-box;
+  color: rgb(255, 255, 255);
+  cursor: default;
+  font-family: Gilroy, sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 28px;
+  outline: none;
+  padding-left: 15px;
+  padding-right: 2px;
+  transition: border 0s ease 0s, all 0.15s ease-in 0s, box-shadow 0s ease 0s,
+    all 0.15s ease-out 0s;
+  width: 100%;
+  will-change: border, box-shadow, opacity;
+}
+.form-input-wrapper input:focus {
+  border-color: var(--card-border-color);
+}
+.form-input-container {
+  display: flex;
+  flex: 1 1 0%;
+}
+.form-input-subtext {
+  text-align: right;
+  display: flex;
+  flex-flow: column;
+  align-items: flex-end;
+}
+
+.countdown,
+.countdown-expired {
+  display: none;
+  flex-flow: column;
+  justify-content: space-between;
+}
+.count-expired {
+  display: none;
+}
+.countdown-timer {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+}
+.countdown-digit-wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+.countdown-digit {
+  font-size: 18px;
+  font-weight: bold;
+}
+.card-action-box-subtext {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+  justify-content: space-between;
+  padding: 15px 5px;
+}
+.card-action-box-subtext .highlight {
+  margin-right: 0;
+}
+
+/* COMPONENTS */
+button.btn-outline-primary {
+  background-color: var(--card-bg-color);
+  padding: 20px 10px;
+  border-radius: 8px;
+}
+button.btn-outline-primary:hover {
+  background-color: var(--card-border-color);
+  color: white;
+  cursor: pointer;
+}
+button.btn-outline-primary:disabled {
+  background-color: var(--card-bg-color);
+  border: none;
+  color: var(--gray-light);
+  cursor: not-allowed;
+}
+/* Tooltip container */
+.tooltip {
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  width: 100%;
+}
+.tooltip > .label-text {
+  color: var(--gray-light);
+  border-bottom: 1px dotted var(--gray-light); /* If you want dots under the hoverable text */
+}
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 100%;
+  background-color: var(--card-bg-color);
+  color: #fff;
+  text-align: center;
+  padding: 15px 20px;
+  border-radius: 6px;
+  top: 20px;
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+  box-shadow: 0 10px 10px #000;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+/* Progress Bar */
+.progress-wrapper {
+  margin: 0px 0 20px 0;
+  width: 100%;
+}
+.progress-container {
+  background-color: #000;
+  border: var(--card-border-style);
+  border-radius: 15px;
+  height: 25px;
+  margin: 0px 0 8px 0;
+}
+.progress-fill {
+  width: 0;
+  background-color: var(--card-border-color);
+  border-radius: 15px;
+  height: 100%;
+  box-shadow: 0 0 6px var(--card-border-color);
+}
+.progress-label-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* UTILITIES */
+.text-center {
+  text-align: center;
+  justify-content: center;
+}
+.capitalize {
+  text-transform: capitalize;
+}
+.xsmall {
+  font-size: 10px;
+}
