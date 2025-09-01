@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>Vesting - GRY.PH </title>
+    <meta property="og:title" content="GRYPH Vesting" />
+    <meta property="og:image" content="https://gryphcdn.s3.ap-southeast-1.amazonaws.com/static/2022/authentic-streetwear.jpg" />
+    <meta property="og:url" content="https://gry.ph/vesting" />
+    <meta property="og:type" content="website" />
+
+    <link rel="shortcut icon" href="//gryphcdn.s3.ap-southeast-1.amazonaws.com/static/2022/favicon.png" type="image/x-icon"></link>
+    <link rel="icon" href="//gryphcdn.s3.ap-southeast-1.amazonaws.com/static/2022/favicon.png" type="image/x-icon" />
+
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" />
+
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="/styles/theme.css?v1" />
+    <link rel="stylesheet" type="text/css" href="/styles/vesting.css?v1" />
+  </head>
+  <body>
+    <header class="head">
+      <nav class="left">
+        <a class="logo" href="/">
+          <img src="https://gryphcdn.s3.ap-southeast-1.amazonaws.com/static/2022/gryph-8bit-7.png" />
+        </a>
+        <a class="name" href="/">GRY.PH</a>
+      </nav>
+      <nav class="right">
+        <a class="btn-outline-primary" href="https://shop.gry.ph/" target="_blank">Shop Now</a>
+        <a href="https://whitepaper.gry.ph/" target="_blank">Whitepaper</a>
+        <a href="/get-whitelisted.html">Whitelist</a>
+        <a href="/gns.html">GNS</a>
+        <a href="/vesting.html">Vesting</a>
+        <a class="social" href="https://www.twitter.com/gryphnft" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a class="social" href="https://discord.io/gryphmetafi" target="_blank">
+          <i class="fab fa-discord"></i>
+        </a>
+        <a class="social" href="https://github.com/gryphnft" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      </nav>
+    </header>
+    <main class="body">
+      <section class="section">
+          <div class="container">
+              <div class="column">
+                  <div class="content align-left">
+                      <span class="label"><span class="highlight">$GRYPH </span>Vesting</span>
+                      <h1>The Token Sale is Live!</h1>
+                      <p>
+                     All whitelist participants will be required to join our Discord channel. Once the Staking begins we will release 1.000.000 $GRYPH. 
+                     </p>
+                     <p>
+                         Each token sale drop the price will be dictated at the discretion of the community. 
+
+                     </p>
+                     <p>
+At the end of each increment of tokens released for sale the next increment will be priced at the discretion of the community by vote.
+                     </p> 
+                  </div>
+              </div>
+              <div class="column">
+                  <div class="content card">
+                      <div class="card-heading text-center">
+                           <div id="countdown-expired-message" class="countdown-expired small"> 
+                           </div>
+                          <div class="countdown">
+                              <h2 class="small">Token Sale Ends In:</h2>
+                            <div class="countdown-timer">
+                                <div class="countdown-digit-wrapper">
+                                        <span 
+                                        id="days"
+                                        class="countdown-digit">
+                                            0
+                                        </span>
+                                        <span class="label small">
+                                            days
+                                        </span>
+                                </div>
+                                <div class="countdown-digit-wrapper">
+                                    <span id="hours" class="countdown-digit">
+                                        0
+                                    </span>
+                                    <span class="label small">
+                                        hours
+                                    </span>
+                                </div>
+                                <div 
+                                 class="countdown-digit-wrapper">
+                                    <span id="minutes" class="countdown-digit">
+                                        0
+                                    </span>
+                                    <span class="label small">
+                                        minutes
+                                    </span>
+                                </div>
+                                <div class="countdown-digit-wrapper">
+                                    <span id="seconds" class="countdown-digit">
+                                        0
+                                    </span>
+                                    <span class="label small">
+                                        seconds
+                                    </span>
+                                </div>
+                            </div>
+                            <!-- <div >
+                                <span class="small text-center">April 30, 2022</span>
+                            </div> -->
+                          </div>
+                      </div>
+                      <div class="progress-wrapper">
+                          <div class="progress-container">
+                              <div id="progress-fill-box" class="progress-fill"></div>
+                          </div>
+                          <div class="progress-label-container">
+                              <span id="token-amount-vested" class="xsmall"></span>
+                              <span id="total-token-supply" class="xsmall"></span>
+                          </div>
+                      </div>
+                        <div id="loading-box" class=" card-action-box"></div>
+                        <form class="card-action-box" id="token-sale-form">
+                            <div class="text-center">
+                                <label >Purchase amount:</label>
+                                <span class="small"></span>
+                            </div>
+                             <div class="form-input-wrapper">
+                                 <div class="form-input-container">
+                                     <span class="highlight small">$GRYPH</span>
+                                 </div>
+                                 <div class="form-input-container">
+                                     <input id="amount" type="number" autocomplete="off" autocorrect="off" placeholder="0" />
+
+                                 </div>
+                            </div>
+                            <button id="order-button" type="button" disabled class="btn-outline-primary">Review Order</button>
+                        </form>
+                        <div id="eth-total-container" class="total-container">
+                            <div class="card-action-box-subtext">
+                                <span class="small">Total :</span>
+                                <span id="eth-total-value" class="highlight small"></span>
+                            </div>
+                            <div id="tooltip-container" class="tooltip">
+                                <span class="label-text small">
+                                    How is this calculated?
+                                </span>
+                                <span class="tooltiptext small">
+                                    The purchase amount of $GRYPH is multiplied by
+                                   <span id="tooltip-multiplier" class="small"></span>
+                                </span>
+                            </div>
+                        </div> 
+                  </div>
+              </div>
+          </div>
+        <!-- <div class="container">
+          <h1><span class="label">GRY.PH</span> <span class="title">Token Sale is Live!</span></h1>
+          <h3>Decentralized Naming for sellers, buyers and art collections.</h3>
+          <form id="registration">
+            <img class="logo" width="35" src="https://gryphcdn.s3.ap-southeast-1.amazonaws.com/static/2022/gryph-8bit-7.png" />
+            <label>Enter the amount of $GRYPH you would like to purchase:</label>
+            <input id="namespace" type="text" placeholder="ex. mycollection" />
+            <span class="domain">.gry.ph</span>
+            <button>Reserve</button>
+          </form>
+          <p class="note">Registration is not yet live, but you are free to try on Rinkeby testnet.</p>
+        </div> -->
+      </section>
+      <!-- <section class="section section-2">
+        <p>
+        Once the Staking begins
+        we will release 1.000.000 SGRYPH. Each
+        token sale drop the pri
+        dictated at the discretion of the
+        community.
+        pleased for sale
+        the next increment will be pr
+        dat the discretion of the communitu
+        by vote.
+        </p>
+        <nav class="proof">
+          <a href="#">
+            <img src="https://gryphcdn.s3.ap-southeast-1.amazonaws.com/static/2022/logo-opensea.png">
+            <span>
+              <small>View On</small>
+              <strong>OpenSea</strong>
+            </span>
+          </a>
+          <a href="#">
+            <img src="https://gryphcdn.s3.ap-southeast-1.amazonaws.com/static/2022/logo-ethereum.png">
+            <span>
+              <small>View On</small>
+              <strong>Etherscan</strong>
+            </span>
+          </a>
+          <a href="https://github.com/gryphnft/contracts/blob/2.0/contracts/Gryph/GryphNamespaces.sol" target="_blank">
+            <img src="https://gryphcdn.s3.ap-southeast-1.amazonaws.com/static/2022/logo-github.png">
+            <span>
+              <small>Contracts On</small>
+              <strong>Github</strong>
+            </span>
+          </a>
+        </nav>
+      </section>
+      <section class="section section-3">
+        <div class="container">
+          <h2>Frequent Questions</h2>
+          <div>
+            <strong>Why should I reserve a name?</strong>
+            <p>
+              If you are an artist/creator/collector/trader, you will 
+              want to reserve your desired name early in order to use it 
+              when we launch our NFT marketplace. Names reserved before 
+              the official launch will have no expiration.
+            </p>
+          </div>
+          <div>
+            <strong>What can I do with a namespace?</strong>
+            <p>
+              Namespaces will be used on the new marketplace as an easy 
+              way for others to remember and access your collection or 
+              profile easier. All namespaces that are NFT collections 
+              acquired through this medium will be featured and promoted 
+              throughout the marketplace.
+            </p>
+          </div>
+          <div>
+            <strong>How much does it cost?</strong>
+            <ul>
+              <li>0.192 ether for 4 letters</li>
+              <li>0.096 ether for 5 letters</li>
+              <li>0.048 ether for 6 letters</li>
+              <li>0.024 ether for 7 letters</li>
+              <li>0.012 ether for 8 letters</li>
+              <li>0.006 ether for 9 letters</li>
+              <li>0.003 ether for 10 letters or more</li>
+            </ul>
+          </div>
+          <div>
+            <strong>Why is it more expensive compared to ENS?</strong>
+            <p>
+              With ENS you have to renew every year. These namespaces do 
+              not expire and this offer will only last till the launch of 
+              our NFT marketplace.
+            </p>
+          </div>
+          <div>
+            <strong>When will I be able to use my name?</strong>
+            <p>
+              Your name can be immediately used when the NFT marketplace 
+              is launched.
+            </p>
+          </div>
+          <div>
+            <strong>Do I need to renew every year?</strong>
+            <p>
+              While the NFT marketplace is being launched, names reserved 
+              will never need to be renewed.
+            </p>
+          </div>
+          <div>
+            <strong>What happens if I sell or give away my name?</strong>
+            <p>
+              The ownership rights will pass to the new owner.
+            </p>
+          </div>
+          <div>
+            <strong>Do we need to do anything to ensure the continued use of my name?</strong>
+            <p>
+              Besides holding the NFT, no.
+            </p>
+          </div>
+          <div>
+            <strong>Can I trade my name on other NFT exchanges?</strong>
+            <p>
+              Yes you can.
+            </p>
+          </div>
+          <div>
+            <strong>How are funds earned from this service used?</strong>
+            <p>
+              Funds will be used for the continuing development of the 
+              NFT marketplace.
+            </p>
+          </div>
+          <div>
+            <strong>What prohibits large scale name grabbing besides registration fees?</strong>
+            <p>The cost of doing this and gas is the only limitation in place.</p>
+          </div>
+          <div>
+            <strong>Can my name ever be take away from me?</strong>
+            <p>
+              In small cases where the name is in breach of a registered 
+              trademark it may be taken away. In these cases you will be 
+              compensated for your loss.
+            </p>
+          </div>
+          <div>
+            <strong>How can I get a 2 or 3 letter name?</strong>
+            <p>
+              Right now the only way is to either contact us or wait for 
+              hyper exclusive airdrops.
+            </p>
+          </div>
+        </div>
+      </section> -->
+    </main>
+    <footer class="foot">
+      <nav class="left">
+        <a href="/">Home</a>
+        <a href="/about.html">About</a>
+        <a href="https://whitepaper.gry.ph/3.-technology/3.6.-roadmap" target="_blank">Roadmap</a>
+        <a href="https://whitepaper.gry.ph/5.-prologue/5.1.-faq" target="_blank">Questions</a>
+      </nav>
+      <nav class="center">
+        <h6>GRY.PH</h6>
+        <div>
+          <img class="logo" src="https://gryphcdn.s3.ap-southeast-1.amazonaws.com/static/2022/gryph-8bit-7.png" />
+        </div>
+        <a class="social" href="https://www.twitter.com/gryphnft" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a class="social" href="https://discord.com/invite/PZDyNcVSNu" target="_blank">
+          <i class="fab fa-discord"></i>
+        </a>
+        <a class="social" href="https://github.com/gryphnft" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      </nav>
+      <nav class="right">
+        <a href="/gns.html">Naming Service</a>
+        <a href="https://whitepaper.gry.ph/" target="_blank">Whitepaper</a>
+        <a href="/get-whitelisted.html">Get Whitelisted</a>
+        <a href="https://shop.gry.ph/" target="_blank">Shop Now</a>
+      </nav>
+    </footer>
+    <script src="//cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+     <script type="text/javascript" src="/scripts/contracts-testnet.js"></script>
+    <script type="text/javascript" src="/scripts/lib/blockapi.js"></script>
+    <script type="text/javascript" src="/scripts/vesting.js"></script>
+  </body>
+</html>
